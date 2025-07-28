@@ -98,6 +98,9 @@
         .header-title {
             font-size: 18px;
             font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .header-right {
@@ -118,6 +121,40 @@
 
         .header-button i {
             margin-right: 5px;
+        }
+
+        /* Mobile Header Menu */
+        .mobile-menu-button {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .mobile-dropdown {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background-color: var(--header-bg);
+            width: 200px;
+            box-shadow: 0 8px 16px var(--shadow-color);
+            z-index: 1000;
+        }
+
+        .mobile-dropdown-item {
+            display: block;
+            padding: 15px;
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-dropdown-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            text-decoration: none;
         }
 
         /* Sidebar Styles */
@@ -446,12 +483,20 @@
                 grid-template-columns: 1fr;
             }
 
-            .header-button span {
+            .header-button {
                 display: none;
             }
 
-            .header-button i {
-                margin-right: 0;
+            .mobile-menu-button {
+                display: block;
+            }
+
+            .mobile-dropdown.active {
+                display: block;
+            }
+
+            .header-title {
+                max-width: 200px;
             }
         }
 
@@ -620,6 +665,11 @@
         .dark-mode .resource-description {
             color: #aaa;
         }
+
+        /* Text alignment */
+        .text-center {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -662,8 +712,37 @@
                 <i class="fas fa-moon"></i>
                 <span>Theme</span>
             </button>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="mobile-menu-button">
+                <i class="fas fa-ellipsis-v"></i>
+            </button>
         </div>
     </header>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-dropdown" class="mobile-dropdown">
+        <a href="https://github.com/MohammadrezaNarimaniUCDavis/TAE30-IoT-Lab-Materials" target="_blank" class="mobile-dropdown-item">
+            <i class="fab fa-github"></i> GitHub
+        </a>
+        <a href="#" id="mobile-suggest-edit" class="mobile-dropdown-item">
+            <i class="fas fa-edit"></i> Suggest Edit
+        </a>
+        <a href="#" id="mobile-open-issue" class="mobile-dropdown-item">
+            <i class="fas fa-exclamation-circle"></i> Open Issue
+        </a>
+        <a href="#" id="mobile-fullscreen" class="mobile-dropdown-item">
+            <i class="fas fa-expand"></i> Fullscreen
+        </a>
+        <a href="#" id="mobile-download-pdf" class="mobile-dropdown-item">
+            <i class="fas fa-file-pdf"></i> Download PDF
+        </a>
+        <a href="#" id="mobile-download-md" class="mobile-dropdown-item">
+            <i class="fas fa-file-alt"></i> Download MD
+        </a>
+        <a href="#" id="mobile-theme-toggle" class="mobile-dropdown-item">
+            <i class="fas fa-moon"></i> Toggle Theme
+        </a>
+    </div>
 
     <div class="container">
         <!-- Sidebar -->
@@ -1433,6 +1512,66 @@
             sidebar.classList.toggle('active');
         });
 
+        // Mobile dropdown menu
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileDropdown = document.getElementById('mobile-dropdown');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileDropdown.classList.toggle('active');
+        });
+
+        // Close mobile dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuButton.contains(e.target) && !mobileDropdown.contains(e.target)) {
+                mobileDropdown.classList.remove('active');
+            }
+        });
+
+        // Mobile menu actions
+        document.getElementById('mobile-suggest-edit').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.open('https://github.com/MohammadrezaNarimaniUCDavis/TAE30-IoT-Lab-Materials/issues/new?title=Suggested%20Edit&labels=enhancement', '_blank');
+        });
+        
+        document.getElementById('mobile-open-issue').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.open('https://github.com/MohammadrezaNarimaniUCDavis/TAE30-IoT-Lab-Materials/issues/new', '_blank');
+        });
+        
+        document.getElementById('mobile-fullscreen').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.body.classList.toggle('fullscreen-mode');
+            
+            if (document.body.classList.contains('fullscreen-mode')) {
+                e.target.innerHTML = '<i class="fas fa-compress"></i> Exit Fullscreen';
+            } else {
+                e.target.innerHTML = '<i class="fas fa-expand"></i> Fullscreen';
+            }
+        });
+        
+        document.getElementById('mobile-download-pdf').addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('PDF download functionality would be implemented here');
+        });
+        
+        document.getElementById('mobile-download-md').addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Markdown download functionality would be implemented here');
+        });
+        
+        document.getElementById('mobile-theme-toggle').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                e.target.innerHTML = '<i class="fas fa-sun"></i> Light Theme';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                e.target.innerHTML = '<i class="fas fa-moon"></i> Dark Theme';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
         // Theme toggle
         const themeToggle = document.getElementById('theme-toggle');
         const themeIcon = themeToggle.querySelector('i');
@@ -1457,6 +1596,9 @@
             document.body.classList.add('dark-mode');
             themeIcon.classList.remove('fa-moon');
             themeIcon.classList.add('fa-sun');
+            
+            const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+            mobileThemeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Theme';
         }
 
         // Fullscreen toggle
@@ -1486,9 +1628,9 @@
             alert('Markdown download functionality would be implemented here');
         });
 
-        // GitHub integration
+        // GitHub integration - corrected links
         document.getElementById('suggest-edit-btn').addEventListener('click', () => {
-            window.open('https://github.com/MohammadrezaNarimaniUCDavis/TAE30-IoT-Lab-Materials/edit/main/README.md', '_blank');
+            window.open('https://github.com/MohammadrezaNarimaniUCDavis/TAE30-IoT-Lab-Materials/issues/new?title=Suggested%20Edit&labels=enhancement', '_blank');
         });
         
         document.getElementById('open-issue-btn').addEventListener('click', () => {
@@ -1522,6 +1664,7 @@
             // Close mobile menu if open
             if (window.innerWidth <= 768) {
                 sidebar.classList.remove('active');
+                mobileDropdown.classList.remove('active');
             }
             
             // Update footer margin in fullscreen mode
@@ -1543,7 +1686,7 @@
         });
         
         // Handle initial page load and URL hash
-        window.addEventListener('load', () => {
+        window.addEventListener('DOMContentLoaded', () => {
             const hash = window.location.hash.substring(1);
             if (hash) {
                 showSection(hash);
@@ -1566,8 +1709,14 @@
         window.addEventListener('resize', () => {
             if (window.innerWidth > 768) {
                 sidebar.classList.remove('active');
+                mobileDropdown.classList.remove('active');
             }
         });
+
+        // Make sure the home section is shown by default
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('home');
+        });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9660cca045e3173b',t:'MTc1MzY2ODE5OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9660ead3949667ff',t:'MTc1MzY2OTQzNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
