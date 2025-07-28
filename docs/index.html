@@ -508,8 +508,21 @@
         }
 
         .ucd-logo-img {
-            height: 40px;
+            height: 80px;
+            width: auto;
             margin-right: 10px;
+            object-fit: contain;
+        }
+
+        .ucd-logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--ucd-blue);
+            margin-left: 10px;
+        }
+
+        .dark-mode .ucd-logo-text {
+            color: var(--ucd-gold);
         }
 
         /* Lab Content Specific Styles */
@@ -686,10 +699,6 @@
                 <i class="fab fa-github"></i>
                 <span>GitHub</span>
             </a>
-            <button id="suggest-edit-btn" class="header-button">
-                <i class="fas fa-edit"></i>
-                <span>Suggest Edit</span>
-            </button>
             <button id="open-issue-btn" class="header-button">
                 <i class="fas fa-exclamation-circle"></i>
                 <span>Open Issue</span>
@@ -724,9 +733,6 @@
         <a href="https://github.com/MohammadrezaNarimaniUCDavis/TAE30-IoT-Lab-Materials" target="_blank" class="mobile-dropdown-item">
             <i class="fab fa-github"></i> GitHub
         </a>
-        <a href="#" id="mobile-suggest-edit" class="mobile-dropdown-item">
-            <i class="fas fa-edit"></i> Suggest Edit
-        </a>
         <a href="#" id="mobile-open-issue" class="mobile-dropdown-item">
             <i class="fas fa-exclamation-circle"></i> Open Issue
         </a>
@@ -748,9 +754,9 @@
         <!-- Sidebar -->
         <aside id="sidebar" class="sidebar">
             <div class="sidebar-content">
-                <div class="ucd-logo">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNDAgNjAiPjxwYXRoIGZpbGw9IiMwMDI4NTUiIGQ9Ik0wIDBoMjQwdjYwSDB6Ii8+PHBhdGggZmlsbD0iI0ZGRDEwMCIgZD0iTTQ1IDEwSDIwMHY0MEg0NXoiLz48cGF0aCBmaWxsPSIjMDAyODU1IiBkPSJNNjUgMjBIMTgwdjIwSDY1eiIvPjx0ZXh0IHg9IjEyMCIgeT0iMzUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iI0ZGRDEwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+VUMgREFWSVM8L3RleHQ+PC9zdmc+" alt="UC Davis Logo" class="ucd-logo-img">
-                    <span>TAE 30: IoT</span>
+                <div class="ucd-logo" style="display: flex; align-items: center;">
+                    <img src="https://github.com/MohammadrezaNarimaniUCDavis/TAE30-IoT-Lab-Materials/raw/main/Images/Logos/Home_Page_Logo.png" alt="IoT in Agriculture Logo" class="ucd-logo-img" style="border-radius: 0;">
+                    <span style="font-weight: bold; color: var(--ucd-blue); margin-left: 10px;">IoT in Ag</span>
                 </div>
 
                 <div class="sidebar-section">
@@ -812,7 +818,7 @@
         <!-- Main Content -->
         <main id="main-content" class="main-content">
             <!-- Home Section -->
-            <section id="home" class="section">
+            <div id="home" class="section">
                 <h1 class="page-title">TAE 30: Communications and Computing Technology</h1>
                 <p class="page-subtitle">An introduction to Internet of Things (IoT) concepts, technologies, and applications</p>
 
@@ -947,14 +953,14 @@
                             <a href="#lab4" class="lab-card-link">View Lab →</a>
                         </div>
                     </div>
-                    <div class="text-center" style="text-align: center; margin-top: 20px;">
+                    <div class="text-center" style="margin-top: 20px;">
                         <a href="#lab1" class="btn">View All Labs</a>
                     </div>
                 </div>
-            </section>
+            </div>
 
             <!-- Lab 1 Section -->
-            <section id="lab1" class="section" style="display: none;">
+            <div id="lab1" class="section" style="display: none;">
                 <h1 class="page-title">Lab 1: Introduction to IoT</h1>
                 <p class="page-subtitle">Getting started with IoT concepts and development environment</p>
 
@@ -1080,10 +1086,10 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
 
             <!-- Lab 2 Section (Placeholder) -->
-            <section id="lab2" class="section" style="display: none;">
+            <div id="lab2" class="section" style="display: none;">
                 <h1 class="page-title">Lab 2: Sensors Basics</h1>
                 <p class="page-subtitle">Working with temperature, humidity, and light sensors</p>
 
@@ -1123,10 +1129,10 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
 
             <!-- Additional Lab Sections (Placeholders) -->
-            <section id="lab3" class="section" style="display: none;">
+            <div id="lab3" class="section" style="display: none;">
                 <h1 class="page-title">Lab 3: Actuators</h1>
                 <p class="page-subtitle">Control LEDs, motors, and other output devices</p>
                 
@@ -1135,9 +1141,9 @@
                         <p>This lab content is under development. Check back soon for the complete tutorial.</p>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <section id="lab4" class="section" style="display: none;">
+            <div id="lab4" class="section" style="display: none;">
                 <h1 class="page-title">Lab 4: Data Collection</h1>
                 <p class="page-subtitle">Collect and store sensor data locally</p>
                 
@@ -1146,9 +1152,9 @@
                         <p>This lab content is under development. Check back soon for the complete tutorial.</p>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <section id="lab5" class="section" style="display: none;">
+            <div id="lab5" class="section" style="display: none;">
                 <h1 class="page-title">Lab 5: Wireless Communication</h1>
                 <p class="page-subtitle">Connect devices wirelessly using various protocols</p>
                 
@@ -1157,9 +1163,9 @@
                         <p>This lab content is under development. Check back soon for the complete tutorial.</p>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <section id="lab6" class="section" style="display: none;">
+            <div id="lab6" class="section" style="display: none;">
                 <h1 class="page-title">Lab 6: Cloud Integration</h1>
                 <p class="page-subtitle">Connect IoT devices to cloud platforms</p>
                 
@@ -1168,9 +1174,9 @@
                         <p>This lab content is under development. Check back soon for the complete tutorial.</p>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <section id="lab7" class="section" style="display: none;">
+            <div id="lab7" class="section" style="display: none;">
                 <h1 class="page-title">Lab 7: Data Visualization</h1>
                 <p class="page-subtitle">Create dashboards to visualize IoT data</p>
                 
@@ -1179,9 +1185,9 @@
                         <p>This lab content is under development. Check back soon for the complete tutorial.</p>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <section id="lab8" class="section" style="display: none;">
+            <div id="lab8" class="section" style="display: none;">
                 <h1 class="page-title">Lab 8: Edge Computing</h1>
                 <p class="page-subtitle">Process data at the edge of the network</p>
                 
@@ -1190,9 +1196,9 @@
                         <p>This lab content is under development. Check back soon for the complete tutorial.</p>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <section id="lab9" class="section" style="display: none;">
+            <div id="lab9" class="section" style="display: none;">
                 <h1 class="page-title">Lab 9: IoT Security</h1>
                 <p class="page-subtitle">Implement security measures for IoT devices</p>
                 
@@ -1201,9 +1207,9 @@
                         <p>This lab content is under development. Check back soon for the complete tutorial.</p>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <section id="lab10" class="section" style="display: none;">
+            <div id="lab10" class="section" style="display: none;">
                 <h1 class="page-title">Lab 10: Final Project</h1>
                 <p class="page-subtitle">Build a complete IoT system</p>
                 
@@ -1212,10 +1218,10 @@
                         <p>This lab content is under development. Check back soon for the complete tutorial.</p>
                     </div>
                 </div>
-            </section>
+            </div>
 
             <!-- Syllabus Section -->
-            <section id="syllabus" class="section" style="display: none;">
+            <div id="syllabus" class="section" style="display: none;">
                 <h1 class="page-title">Course Syllabus</h1>
                 <p class="page-subtitle">TAE 30: Communications and Computing Technology</p>
 
@@ -1339,10 +1345,10 @@
                         </table>
                     </div>
                 </div>
-            </section>
+            </div>
 
             <!-- Resources Section -->
-            <section id="resources" class="section" style="display: none;">
+            <div id="resources" class="section" style="display: none;">
                 <h1 class="page-title">Resources</h1>
                 <p class="page-subtitle">Additional materials to support your learning</p>
 
@@ -1456,10 +1462,10 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
 
             <!-- FAQ Section -->
-            <section id="faq" class="section" style="display: none;">
+            <div id="faq" class="section" style="display: none;">
                 <h1 class="page-title">Frequently Asked Questions</h1>
                 <p class="page-subtitle">Common questions about the course and labs</p>
 
@@ -1492,7 +1498,7 @@
                     <h3 class="card-title">Can I collaborate with other students on the labs?</h3>
                     <p>You are encouraged to discuss concepts and troubleshoot with your classmates, but each student must submit their own work. Copying code or lab reports is considered academic dishonesty.</p>
                 </div>
-            </section>
+            </div>
         </main>
     </div>
 
@@ -1528,11 +1534,6 @@
         });
 
         // Mobile menu actions
-        document.getElementById('mobile-suggest-edit').addEventListener('click', (e) => {
-            e.preventDefault();
-            window.open('https://github.com/MohammadrezaNarimaniUCDavis/TAE30-IoT-Lab-Materials/issues/new?title=Suggested%20Edit&labels=enhancement', '_blank');
-        });
-        
         document.getElementById('mobile-open-issue').addEventListener('click', (e) => {
             e.preventDefault();
             window.open('https://github.com/MohammadrezaNarimaniUCDavis/TAE30-IoT-Lab-Materials/issues/new', '_blank');
@@ -1628,11 +1629,7 @@
             alert('Markdown download functionality would be implemented here');
         });
 
-        // GitHub integration - corrected links
-        document.getElementById('suggest-edit-btn').addEventListener('click', () => {
-            window.open('https://github.com/MohammadrezaNarimaniUCDavis/TAE30-IoT-Lab-Materials/issues/new?title=Suggested%20Edit&labels=enhancement', '_blank');
-        });
-        
+        // GitHub integration
         document.getElementById('open-issue-btn').addEventListener('click', () => {
             window.open('https://github.com/MohammadrezaNarimaniUCDavis/TAE30-IoT-Lab-Materials/issues/new', '_blank');
         });
@@ -1686,7 +1683,7 @@
         });
         
         // Handle initial page load and URL hash
-        window.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', () => {
             const hash = window.location.hash.substring(1);
             if (hash) {
                 showSection(hash);
@@ -1714,9 +1711,9 @@
         });
 
         // Make sure the home section is shown by default
-        document.addEventListener('DOMContentLoaded', function() {
+        window.addEventListener('load', function() {
             showSection('home');
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9660ead3949667ff',t:'MTc1MzY2OTQzNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9661553f95ec15b2',t:'MTc1MzY3Mzc5NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
