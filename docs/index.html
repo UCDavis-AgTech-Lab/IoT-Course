@@ -1671,7 +1671,7 @@
             }
             
             // Mark the active section for printing
-            const sections = document.querySelectorAll('.section');
+            const sections = document.querySelectorAll('#main-content > .section');  // only top‑level pages
             sections.forEach(section => {
                 section.classList.remove('active-for-print');
             });
