@@ -88,6 +88,4 @@ Distributed under the **MIT License**. See `LICENSE` for more information.
 
 * **UC Davis Biological & Agricultural Engineering** – course host  
 * **Parallax BlocklyProp Solo** – block‑based programming environment  
-* **Arduino** – hardware & IDE  
-* **Adafruit & SparkFun** – open‑source electronics tutorials  
 * GitHub Pages – free static site hosting  
