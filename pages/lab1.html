@@ -1,0 +1,113 @@
+<h1 class="page-title">Lab 1: Introduction to IoT</h1>
+<p class="page-subtitle">Getting started with IoT concepts and development environment</p>
+
+<div class="lab-content">
+    <div class="lab-section">
+        <h2 class="lab-section-title">Required Materials</h2>
+        <div class="card">
+            <ul>
+                <li>Microcontroller board (Arduino Uno or similar)</li>
+                <li>Breadboard</li>
+                <li>Jumper wires</li>
+                <li>USB cable</li>
+                <li>LED (any color)</li>
+                <li>220Ω resistor</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Lab Objectives</h2>
+        <div class="card">
+            <p>By the end of this lab, you will be able to:</p>
+            <ul>
+                <li>Understand basic IoT concepts and terminology</li>
+                <li>Set up your development environment with BlocklyProp Solo</li>
+                <li>Create a simple program to blink an LED</li>
+                <li>Upload code to your microcontroller</li>
+                <li>Modify parameters to change LED behavior</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Step-by-Step Tutorial</h2>
+        
+        <div class="step">
+            <h3 class="step-title">1. Setting Up BlocklyProp Solo</h3>
+            <p>BlocklyProp Solo is a visual programming environment that allows you to create programs using blocks that snap together.</p>
+            <ol>
+                <li>Open your web browser and navigate to <a href="https://solo.parallax.com/" target="_blank">https://solo.parallax.com/</a></li>
+                <li>Click on "Create New Project"</li>
+                <li>Select "Arduino" as your board type</li>
+                <li>Name your project "Lab1_Blink_LED"</li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">2. Building the Circuit</h3>
+            <p>Let's build a simple circuit with an LED:</p>
+            <ol>
+                <li>Connect the longer leg (anode) of the LED to digital pin 13 on the Arduino</li>
+                <li>Connect the shorter leg (cathode) of the LED to one end of the 220Ω resistor</li>
+                <li>Connect the other end of the resistor to the GND (ground) pin on the Arduino</li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">3. Creating the Blink Program</h3>
+            <p>Now let's create a program to blink the LED:</p>
+            <ol>
+                <li>In BlocklyProp Solo, find the "Control" category in the toolbox</li>
+                <li>Drag the "Setup" block to the workspace</li>
+                <li>From the "Pins" category, drag the "Set pin [?] to [OUTPUT]" block inside the Setup block</li>
+                <li>Change the pin number to 13</li>
+                <li>From the "Control" category, drag the "Forever" loop block below the Setup block</li>
+                <li>Inside the Forever loop, add these blocks in sequence:
+                    <ul>
+                        <li>From "Pins" category: "Set pin [13] to [HIGH]"</li>
+                        <li>From "Control" category: "Pause (ms) [500]"</li>
+                        <li>From "Pins" category: "Set pin [13] to [LOW]"</li>
+                        <li>From "Control" category: "Pause (ms) [500]"</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">4. Uploading and Testing</h3>
+            <p>Now let's upload the program to the Arduino:</p>
+            <ol>
+                <li>Connect your Arduino to your computer using the USB cable</li>
+                <li>In BlocklyProp Solo, click the "Compile" button</li>
+                <li>Once compilation is complete, click "Load to Board"</li>
+                <li>Select your Arduino from the list of available devices</li>
+                <li>Click "Upload" to send the program to your Arduino</li>
+                <li>After uploading, the LED should start blinking - turning on for 0.5 seconds and off for 0.5 seconds</li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">5. Modifying the Program</h3>
+            <p>Let's modify the program to change the blinking pattern:</p>
+            <ol>
+                <li>Change the first "Pause" block from 500ms to 200ms (faster on time)</li>
+                <li>Change the second "Pause" block from 500ms to 800ms (longer off time)</li>
+                <li>Compile and upload the program again</li>
+                <li>Observe how the blinking pattern has changed</li>
+            </ol>
+            <p>Try experimenting with different timing values to create your own blinking patterns!</p>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Additional Resources</h2>
+        <div class="card">
+            <ul>
+                <li><a href="https://solo.parallax.com/" target="_blank">BlocklyProp Solo Documentation</a></li>
+                <li><a href="https://www.arduino.cc/en/Tutorial/" target="_blank">Arduino Tutorials</a></li>
+                <li><a href="#faq">IoT Concepts FAQ</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
