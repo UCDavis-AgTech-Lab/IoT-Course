@@ -307,15 +307,37 @@ class TAE30Website {
             return;
         }
         
-        // Mark the active section for printing
-        const sections = document.querySelectorAll('#main-content > .section');
-        sections.forEach(section => {
-            section.classList.remove('active-for-print');
-        });
-        activeSection.classList.add('active-for-print');
+        // Create a new window with only the content
+        const printWindow = window.open('', '_blank');
+        const pageTitle = activeSection.querySelector('.page-title')?.textContent || 'Content';
         
-        // Print the page
-        window.print();
+        printWindow.document.write(`
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>${pageTitle}</title>
+                <style>
+                    body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+                    h1 { color: #002855; border-bottom: 2px solid #FFD100; padding-bottom: 8px; }
+                    h2 { color: #002855; margin-top: 30px; }
+                    h3 { color: #002855; }
+                    .card { border: 1px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 4px; }
+                    table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+                    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+                    th { background-color: #f2f2f2; }
+                    ul, ol { margin: 10px 0 10px 20px; }
+                </style>
+            </head>
+            <body>
+                ${activeSection.innerHTML}
+            </body>
+            </html>
+        `);
+        
+        printWindow.document.close();
+        printWindow.focus();
+        printWindow.print();
+        printWindow.close();
     }
 
     generateMarkdown() {
