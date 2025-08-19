@@ -126,7 +126,7 @@ a:hover {
 
 .mobile-dropdown {
     display: none;
-    position: absolute;
+    position: fixed;
     top: 60px;
     right: 0;
     background-color: var(--header-bg);
@@ -146,6 +146,45 @@ a:hover {
 .mobile-dropdown-item:hover {
     background-color: rgba(255, 255, 255, 0.1);
     text-decoration: none;
+}
+
+/* Sidebar Toggle Button */
+.sidebar-toggle {
+    position: fixed;
+    top: 50%;
+    left: 280px;
+    transform: translateY(-50%);
+    background-color: var(--border-color);
+    color: var(--text-color);
+    border: none;
+    width: 20px;
+    height: 40px;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    z-index: 1001;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    box-shadow: 2px 0 4px var(--shadow-color);
+}
+
+.sidebar-toggle:hover {
+    background-color: var(--ucd-gold);
+    color: var(--ucd-blue);
+}
+
+.sidebar.collapsed {
+    transform: translateX(-280px);
+}
+
+.sidebar.collapsed + .sidebar-toggle {
+    left: 0;
+}
+
+.sidebar.collapsed + .sidebar-toggle i {
+    transform: rotate(180deg);
 }
 
 /* Sidebar Styles */
@@ -220,8 +259,16 @@ a:hover {
     margin-left: 280px;
     margin-top: 60px;
     padding: 30px;
-    max-width: 1200px;
+    max-width: none;
     transition: margin-left 0.3s ease;
+}
+
+.sidebar.collapsed ~ .main-content {
+    margin-left: 0;
+}
+
+.sidebar.collapsed ~ .footer {
+    margin-left: 0;
 }
 
 .page-title {
@@ -403,6 +450,10 @@ code {
     transition: margin-left 0.3s ease;
 }
 
+.sidebar.collapsed ~ .footer {
+    margin-left: 0;
+}
+
 /* Dropdown Styles */
 .dropdown {
     position: relative;
@@ -440,31 +491,45 @@ code {
     display: block;
 }
 
-/* Fullscreen Mode */
-.fullscreen-mode .sidebar {
-    display: none;
-}
 
-.fullscreen-mode .main-content,
-.fullscreen-mode .footer {
-    margin-left: 0;
-}
 
 /* Responsive Styles */
 @media (max-width: 768px) {
     .sidebar {
         transform: translateX(-100%);
         width: 240px;
+        z-index: 1100;
     }
 
     .sidebar.active {
         transform: translateX(0);
     }
 
+    .sidebar.collapsed {
+        transform: translateX(-100%);
+    }
+
+    .sidebar-toggle {
+        left: 0;
+        z-index: 1200;
+    }
+
+    .sidebar.active + .sidebar-toggle {
+        left: 240px;
+    }
+
     .main-content,
     .footer {
         margin-left: 0;
+        transition: margin-left 0.3s ease;
     }
+
+    .footer {
+        width: 100vw;
+        margin-left: 0 !important;
+    }
+
+
 
     .menu-toggle {
         display: block;

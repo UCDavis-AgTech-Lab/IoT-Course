@@ -13,9 +13,28 @@ class TAE30Website {
     }
 
     setupEventListeners() {
+        // Sidebar toggle
+        const sidebarToggle = document.getElementById('sidebar-toggle');
+        const sidebar = document.getElementById('sidebar');
+        
+        sidebarToggle?.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                // Mobile behavior - simple overlay
+                sidebar.classList.toggle('active');
+            } else {
+                // Desktop behavior
+                sidebar.classList.toggle('collapsed');
+                const footer = document.getElementById('footer');
+                if (sidebar.classList.contains('collapsed')) {
+                    footer.style.marginLeft = '0';
+                } else {
+                    footer.style.marginLeft = '280px';
+                }
+            }
+        });
+
         // Mobile menu toggle
         const menuToggle = document.getElementById('menu-toggle');
-        const sidebar = document.getElementById('sidebar');
         
         menuToggle?.addEventListener('click', () => {
             sidebar.classList.toggle('active');
@@ -41,8 +60,7 @@ class TAE30Website {
         // Theme toggle
         this.setupThemeToggle();
 
-        // Fullscreen toggle
-        this.setupFullscreenToggle();
+
 
         // Download handlers
         this.setupDownloadHandlers();
@@ -112,33 +130,7 @@ class TAE30Website {
         }
     }
 
-    setupFullscreenToggle() {
-        const fullscreenBtn = document.getElementById('fullscreen-btn');
-        const fullscreenIcon = fullscreenBtn?.querySelector('i');
-        const mobileFullscreen = document.getElementById('mobile-fullscreen');
-        
-        const toggleFullscreen = (e) => {
-            e?.preventDefault();
-            document.body.classList.toggle('fullscreen-mode');
-            
-            if (document.body.classList.contains('fullscreen-mode')) {
-                fullscreenIcon?.classList.remove('fa-expand');
-                fullscreenIcon?.classList.add('fa-compress');
-                if (mobileFullscreen) {
-                    mobileFullscreen.innerHTML = '<i class="fas fa-compress"></i> Exit Fullscreen';
-                }
-            } else {
-                fullscreenIcon?.classList.remove('fa-compress');
-                fullscreenIcon?.classList.add('fa-expand');
-                if (mobileFullscreen) {
-                    mobileFullscreen.innerHTML = '<i class="fas fa-expand"></i> Fullscreen';
-                }
-            }
-        };
-        
-        fullscreenBtn?.addEventListener('click', toggleFullscreen);
-        mobileFullscreen?.addEventListener('click', toggleFullscreen);
-    }
+
 
     setupDownloadHandlers() {
         document.getElementById('download-pdf')?.addEventListener('click', (e) => {
