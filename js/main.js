@@ -299,8 +299,8 @@ class TAE30Website {
     }
 
     generatePDF() {
-        const activeSection = document.querySelector('.section[style*="block"]') || 
-                            document.querySelector('.section:not([style*="none"])');
+        // Find the currently visible section
+        const activeSection = document.querySelector('#main-content .section:not([style*="display: none"])');
         
         if (!activeSection) {
             alert('No content to download.');
@@ -310,6 +310,11 @@ class TAE30Website {
         // Create a new window with only the content
         const printWindow = window.open('', '_blank');
         const pageTitle = activeSection.querySelector('.page-title')?.textContent || 'Content';
+        
+        // Clone the section and remove any unwanted elements
+        const contentClone = activeSection.cloneNode(true);
+        const toggleButton = contentClone.querySelector('.sidebar-toggle');
+        if (toggleButton) toggleButton.remove();
         
         printWindow.document.write(`
             <!DOCTYPE html>
@@ -326,10 +331,11 @@ class TAE30Website {
                     th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
                     th { background-color: #f2f2f2; }
                     ul, ol { margin: 10px 0 10px 20px; }
+                    .sidebar-toggle { display: none !important; }
                 </style>
             </head>
             <body>
-                ${activeSection.innerHTML}
+                ${contentClone.innerHTML}
             </body>
             </html>
         `);
