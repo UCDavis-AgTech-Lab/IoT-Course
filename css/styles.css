@@ -556,24 +556,19 @@ code {
     }
 
     /* Mobile table responsiveness */
+    .card {
+        overflow-x: auto;
+    }
+
     table {
-        font-size: 12px;
+        min-width: 300px;
         width: 100%;
-        table-layout: fixed;
+        white-space: nowrap;
     }
 
     th, td {
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        padding: 4px;
-    }
-
-    th:first-child, td:first-child {
-        width: 15%;
-    }
-
-    th:last-child, td:last-child {
-        width: 20%;
+        padding: 8px 4px;
+        font-size: 12px;
     }
 }
 
