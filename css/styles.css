@@ -555,20 +555,37 @@ code {
         max-width: 200px;
     }
 
-    /* Mobile table responsiveness */
-    .card {
-        overflow-x: auto;
+    /* Prevent any one element from forcing horizontal scrolling on mobile */
+    img, iframe, table {
+        max-width: 100%;
     }
 
-    table {
-        min-width: 300px;
+    /* Keep aspect and avoid overflow for images/iframes */
+    img, iframe {
+        height: auto;
+    }
+
+    /* Make wide tables scroll within themselves instead of stretching the page */
+    .table-responsive {
+        display: block;
         width: 100%;
-        white-space: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
+    /* Prevent long words/URLs in table cells from blowing out the width */
+    table {
+        table-layout: fixed;
+    }
     th, td {
-        padding: 8px 4px;
-        font-size: 12px;
+        word-wrap: break-word;
+        overflow-wrap: anywhere;
+    }
+
+    /* Code/pre blocks can also cause width issues */
+    pre, code {
+        white-space: pre-wrap;
+        word-break: break-word;
     }
 }
 
