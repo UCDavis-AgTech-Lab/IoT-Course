@@ -554,6 +554,27 @@ code {
     .header-title {
         max-width: 200px;
     }
+
+    /* Mobile table responsiveness */
+    table {
+        font-size: 12px;
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    th, td {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        padding: 4px;
+    }
+
+    th:first-child, td:first-child {
+        width: 15%;
+    }
+
+    th:last-child, td:last-child {
+        width: 20%;
+    }
 }
 
 /* UC Davis Logo */
