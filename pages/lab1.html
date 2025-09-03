@@ -1,32 +1,36 @@
-<h1 class="page-title">Lab 1: Introduction to IoT</h1>
-<p class="page-subtitle">Getting started with IoT concepts and development environment</p>
+<h1 class="page-title">Lab 1: Installing BlocklyProp Solo</h1>
+<p class="page-subtitle">Connect Parallax activity board and create your first Blockly script</p>
 
 <div class="lab-content">
-    <div class="lab-section">
-        <h2 class="lab-section-title">Required Materials</h2>
+    <div class="lab-section learning-goals">
+        <h2 class="lab-section-title">Learning Goals</h2>
         <div class="card">
             <ul>
-                <li>Microcontroller board (Arduino Uno or similar)</li>
-                <li>Breadboard</li>
-                <li>Jumper wires</li>
-                <li>USB cable</li>
-                <li>LED (any color)</li>
-                <li>220Ω resistor</li>
+                <li>Connect Parallax activity board to a computer</li>
+                <li>Create a simple script in Blockly</li>
+                <li>Run and save the script</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="lab-section materials">
+        <h2 class="lab-section-title">Software and Hardware</h2>
+        <div class="card">
+            <ul>
+                <li>BlocklyProp Solo</li>
+                <li>Activity Board</li>
+                <li>Parallax USB programming cable</li>
             </ul>
         </div>
     </div>
 
     <div class="lab-section">
-        <h2 class="lab-section-title">Lab Objectives</h2>
+        <h2 class="lab-section-title">Instructions</h2>
         <div class="card">
-            <p>By the end of this lab, you will be able to:</p>
-            <ul>
-                <li>Understand basic IoT concepts and terminology</li>
-                <li>Set up your development environment with BlocklyProp Solo</li>
-                <li>Create a simple program to blink an LED</li>
-                <li>Upload code to your microcontroller</li>
-                <li>Modify parameters to change LED behavior</li>
-            </ul>
+            <p>Please follow the instructions on the <a href="https://learn.parallax.com/tutorials/language/blocklyprop/getting-started-blocklyprop-solo" target="_blank">Parallax website</a>.</p>
+            <p>This assignment has three steps shown on the top left. Please follow the instructions for each step. Please start from the first one (BlocklyProp Launcher). You can then go to the next step either by clicking on the top left menu (Connect and Program) or simply by clicking on the menu (Connect and Program) shown at the bottom of the page.</p>
+            
+            <img src="../assets/images/learning-modules/lab1_pic1.png" alt="BlocklyProp Interface" class="lab-image">
         </div>
     </div>
 
@@ -34,80 +38,75 @@
         <h2 class="lab-section-title">Step-by-Step Tutorial</h2>
         
         <div class="step">
-            <h3 class="step-title">1. Setting Up BlocklyProp Solo</h3>
-            <p>BlocklyProp Solo is a visual programming environment that allows you to create programs using blocks that snap together.</p>
-            <ol>
-                <li>Open your web browser and navigate to <a href="https://solo.parallax.com/" target="_blank">https://solo.parallax.com/</a></li>
-                <li>Click on "Create New Project"</li>
-                <li>Select "Arduino" as your board type</li>
-                <li>Name your project "Lab1_Blink_LED"</li>
-            </ol>
+            <h3 class="step-title">Step 1. BlocklyProp Launcher</h3>
+            <ul>
+                <li>Download and install the BlocklyProp Launcher Installer for your operating system.</li>
+                <li>Name your project appropriately. For instance, you may want to name it as: <span class="highlight">Lab1_YourInitials_DescriptiveName</span> (e.g., Lab1_AM_installingBlocklyprop)</li>
+            </ul>
         </div>
 
         <div class="step">
-            <h3 class="step-title">2. Building the Circuit</h3>
-            <p>Let's build a simple circuit with an LED:</p>
-            <ol>
-                <li>Connect the longer leg (anode) of the LED to digital pin 13 on the Arduino</li>
-                <li>Connect the shorter leg (cathode) of the LED to one end of the 220Ω resistor</li>
-                <li>Connect the other end of the resistor to the GND (ground) pin on the Arduino</li>
-            </ol>
+            <h3 class="step-title">Step 2. Connect and Program</h3>
+            <p>Once you connect the USB cable, from the port dropdown menu in the software (shown below), select the COM (communication) port connected to your Propeller board.</p>
+            
+            <img src="../assets/images/learning-modules/lab1_pic2.png" alt="Port Selection" class="lab-image">
         </div>
 
         <div class="step">
-            <h3 class="step-title">3. Creating the Blink Program</h3>
-            <p>Now let's create a program to blink the LED:</p>
-            <ol>
-                <li>In BlocklyProp Solo, find the "Control" category in the toolbox</li>
-                <li>Drag the "Setup" block to the workspace</li>
-                <li>From the "Pins" category, drag the "Set pin [?] to [OUTPUT]" block inside the Setup block</li>
-                <li>Change the pin number to 13</li>
-                <li>From the "Control" category, drag the "Forever" loop block below the Setup block</li>
-                <li>Inside the Forever loop, add these blocks in sequence:
-                    <ul>
-                        <li>From "Pins" category: "Set pin [13] to [HIGH]"</li>
-                        <li>From "Control" category: "Pause (ms) [500]"</li>
-                        <li>From "Pins" category: "Set pin [13] to [LOW]"</li>
-                        <li>From "Control" category: "Pause (ms) [500]"</li>
-                    </ul>
-                </li>
-            </ol>
-        </div>
-
-        <div class="step">
-            <h3 class="step-title">4. Uploading and Testing</h3>
-            <p>Now let's upload the program to the Arduino:</p>
-            <ol>
-                <li>Connect your Arduino to your computer using the USB cable</li>
-                <li>In BlocklyProp Solo, click the "Compile" button</li>
-                <li>Once compilation is complete, click "Load to Board"</li>
-                <li>Select your Arduino from the list of available devices</li>
-                <li>Click "Upload" to send the program to your Arduino</li>
-                <li>After uploading, the LED should start blinking - turning on for 0.5 seconds and off for 0.5 seconds</li>
-            </ol>
-        </div>
-
-        <div class="step">
-            <h3 class="step-title">5. Modifying the Program</h3>
-            <p>Let's modify the program to change the blinking pattern:</p>
-            <ol>
-                <li>Change the first "Pause" block from 500ms to 200ms (faster on time)</li>
-                <li>Change the second "Pause" block from 500ms to 800ms (longer off time)</li>
-                <li>Compile and upload the program again</li>
-                <li>Observe how the blinking pattern has changed</li>
-            </ol>
-            <p>Try experimenting with different timing values to create your own blinking patterns!</p>
+            <h3 class="step-title">Step 3. Saving Projects</h3>
+            <ul>
+                <li>Pay attention to the difference between RAM and EEPROM.</li>
+                <li>Save your project. It is saved as *.svg file. Every time you save the project, it adds a number at the end and saves it, unless you overwrite on the previous version.</li>
+            </ul>
         </div>
     </div>
 
     <div class="lab-section">
-        <h2 class="lab-section-title">Additional Resources</h2>
-        <div class="card">
+        <h2 class="lab-section-title">Notes on Installation, Troubleshooting, and Programming</h2>
+        
+        <div class="step">
+            <h3 class="step-title">Download the USB Driver</h3>
             <ul>
-                <li><a href="https://solo.parallax.com/" target="_blank">BlocklyProp Solo Documentation</a></li>
-                <li><a href="https://www.arduino.cc/en/Tutorial/" target="_blank">Arduino Tutorials</a></li>
-                <li><a href="#faq">IoT Concepts FAQ</a></li>
+                <li>Please make sure you accept default installation with FTDI drivers once you are installing BlocklyProp Solo.</li>
+                <li>If the system doesn't detect the device connected via USB, then follow these steps:
+                    <ul>
+                        <li>Install Parallax FTDI USB Drivers</li>
+                        <li><a href="https://www.parallax.com/package/parallax-ftdi-usb-drivers-for-windows/" target="_blank">Parallax FTDI USB Drivers for Windows</a></li>
+                        <li><a href="https://www.parallax.com/package/mac-ftdi-usb-driver/" target="_blank">Mac FTDI USB Driver</a></li>
+                    </ul>
+                </li>
             </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">Programming</h3>
+            <ol>
+                <li>Create a block of code that prints the following texts in a new line in the terminal:
+                    <ul>
+                        <li>Add a comment as the first line of the code saying, 'TAE 30'.</li>
+                        <li>Add another comment in the next line: 'Lab 1'.<br>
+                            <strong>NOTE:</strong> the comments are not printed in the terminal. Comments are used to annotate the code and make it easier to understand for yourself when you get back to your code later and also for others when you share your code with them.</li>
+                        <li>Print the following statements, each in a new line:
+                            <ul>
+                                <li>Hello!</li>
+                                <li>A blank line to leave a space between the first and second line.</li>
+                                <li>Your name (e.g., "My name is Ali Moghimi")</li>
+                                <li>A fun statement (e.g., 'I love ice cream!')</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>Save your code on your computer.</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">What to Submit</h2>
+        <div class="card">
+            <p>A screenshot of your code and the terminal showing the printed statements. Please note the project name with your initials should be visible in the screenshot (similar to the screenshot below).</p>
+            
+            <img src="../assets/images/learning-modules/lab1_pic3.png" alt="Example Screenshot" class="lab-image">
         </div>
     </div>
 </div>

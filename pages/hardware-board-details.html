@@ -1,0 +1,230 @@
+<h1 class="page-title">Propeller Activity Board WX (#32912)</h1>
+<p class="page-subtitle">Comprehensive technical specifications and detailed component breakdown</p>
+
+<div class="lab-content">
+    <div class="lab-section">
+        <h2 class="lab-section-title">Overview</h2>
+        <div class="card">
+            <p>The Propeller Activity Board WX features the 8-core Propeller microcontroller pre-wired to a host of popular peripherals for fast and fun experiments. Learn or teach the basics of electronics, programming, and robotics with this versatile board. Explore our free web tutorials for graphical BlocklyProp code-building or text-based C-language programming at <a href="http://learn.parallax.com" target="_blank">learn.parallax.com</a>.</p>
+            
+            <p>The WX version of the Propeller Activity Board expands upon the functionality of the original (#32910). There's more current for your projects with independent 1.8 amp 3.3 V and 5 V switching regulators, an upgrade from audio-out-only to a Mini TRRS audio/video (or audio/mic) jack, and selectable wireless socket/USB communication between host computer and the Propeller chip (RF module not included!)</p>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Key Features</h2>
+        <div class="card">
+            <ul>
+                <li>Built-in 8-core Propeller P8X32A microcontroller, 64 KB EEPROM, and 5 MHz crystal oscillator</li>
+                <li>Solder-free prototyping with breadboard and header sockets for power and I/O</li>
+                <li>Six servo/sensor ports with power-select jumpers</li>
+                <li>Automatically selects between USB and external power sources and provides USB over-current protection</li>
+                <li>Center-positive 2.1 mm barrel jack for external power supplies</li>
+                <li>Convenient reset button and 3-position power switch</li>
+                <li>Onboard mini stereo-audio jack with microphone/video pass-through</li>
+                <li>Built-in microSD card slot for data logging or storing WAV files</li>
+                <li>Wireless Module socket accepts RF modules to simplify remote management</li>
+                <li>Dedicated analog header sockets provide four A/D 12-bit inputs and two buffered variable-resolution D/A outputs</li>
+                <li>Indicator lights show the status of system power, servo power, programming source, DAC output levels, wireless communication activity, and USB communication activity</li>
+                <li>3.3 V and 5 V switching voltage regulators with independent 1.8 amp outputs</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Technical Specifications</h2>
+        <div class="card">
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Specification</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Power Requirements</td>
+                            <td>Rev A: 6–15 VDC from external supply, or 5V from USB<br>
+                                Rev B/C: 6–24 VDC from external supply, or 5V from USB</td>
+                        </tr>
+                        <tr>
+                            <td>Communication</td>
+                            <td>USB mini-B (onboard serial over USB)</td>
+                        </tr>
+                        <tr>
+                            <td>Dimensions</td>
+                            <td>4.0 x 3.05 x 0.625 in (10.16 x 7.75 x 1.59 cm)</td>
+                        </tr>
+                        <tr>
+                            <td>Operating Temperature</td>
+                            <td>+32 to +158 °F (0 to +70 °C)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Board Components (Rev B/C)</h2>
+        
+        <div class="step">
+            <h3 class="step-title">1. Propeller Multicore Microcontroller System</h3>
+            <ul>
+                <li>64 Kilobyte I2C EEPROM for program and data storage</li>
+                <li>8 core Propeller P8X32A microcontroller</li>
+                <li>5 MHz crystal oscillator</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">2. Power Jack</h3>
+            <ul>
+                <li>2.1 mm center-positive power jack accepting 6 to 24 VDC (max 15 VDC recommended)</li>
+                <li>Suitable for remote applications and robotics</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">3. 1.8 A Voltage Regulators</h3>
+            <ul>
+                <li>5 V and 3.3 V switching regulators with up to 1.8 A output each</li>
+                <li>Power available through sockets along the breadboard</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">4. Servo Headers</h3>
+            <ul>
+                <li>Six servo ports for connecting servos and other devices</li>
+                <li>Power-select jumpers for each port</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">5. 3.3V / 5V Power Access</h3>
+            <ul>
+                <li>Positive 3.3 V and 5 V supply sockets for powering circuits on the breadboard</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">6. Breadboard</h3>
+            <ul>
+                <li>34 5-socket rows for solder-free prototyping</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">7. GND, D/A, A/D Access</h3>
+            <ul>
+                <li>Access sockets for ground, digital to analog, and analog to digital connections</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">8. D/A Activity Lights</h3>
+            <ul>
+                <li>Yellow LEDs indicating output voltage at D/A sockets 0 and 1</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">9. Analog/Digital Converter</h3>
+            <ul>
+                <li>12-bit ADC for monitoring voltage at analog inputs A/D 0, 1, 2, and 3</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">10. Propeller I/O Pin Access</h3>
+            <ul>
+                <li>Access to Propeller I/O pins P0 to P15</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">11. WX Wireless Access & Communication Header</h3>
+            <ul>
+                <li>Header for wireless module connection and communication</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">12. Power Switch</h3>
+            <ul>
+                <li>Three settings: off, microcontroller power, and servo ports power</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">13. Reset Button</h3>
+            <ul>
+                <li>Restart or reset the Propeller microcontroller's program</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">14. Audio/Video Jack</h3>
+            <ul>
+                <li>TRRS A/V jack for audio output and microphone/video pass-through</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">15. USB Port</h3>
+            <ul>
+                <li>For loading programs, serial-over-USB communications, and power supply</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">16. USB Activity LEDs</h3>
+            <ul>
+                <li>Blue and red LEDs indicating USB communication activity</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">17. Wireless Activity Lights</h3>
+            <ul>
+                <li>LEDs indicating wireless module activity</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">18. microSD Card Socket</h3>
+            <ul>
+                <li>Socket for accessing files from a microSD card</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">19. WX Wireless Communication Module Socket</h3>
+            <ul>
+                <li>Socket for wireless communication modules</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">20. Programming Selector Indicator LEDs</h3>
+            <ul>
+                <li>Indicators for selected programming source</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Resources and Downloads</h2>
+        <div class="card">
+            <ul>
+                <li><a href="https://www.parallax.com/search/?q=32912" target="_blank">Propeller Activity Board WX product page</a></li>
+                <li><a href="http://learn.parallax.com/propeller-c-tutorials" target="_blank">C language tutorials</a></li>
+                <li><a href="http://learn.parallax.com/tutorials/language/blocklyprop" target="_blank">BlocklyProp language tutorials</a></li>
+                <li><a href="http://learn.parallax.com/tutorials/activitybot" target="_blank">ActivityBot robot tutorials</a></li>
+                <li><a href="#" onclick="loadPage('hardware-board-overview'); return false;">← Back to Board Overview</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

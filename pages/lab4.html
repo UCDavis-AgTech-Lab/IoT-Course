@@ -1,39 +1,184 @@
-<h1 class="page-title">Lab 4: Data Collection</h1>
-<p class="page-subtitle">Collect and store sensor data locally</p>
+<h1 class="page-title">Lab 4: Measuring Temperature and Relative Humidity</h1>
+<p class="page-subtitle">Work with temperature and humidity sensors to collect environmental data</p>
 
 <div class="lab-content">
-    <div class="lab-section">
-        <h2 class="lab-section-title">Required Materials</h2>
+    <div class="lab-section learning-goals">
+        <h2 class="lab-section-title">Learning Goals</h2>
         <div class="card">
             <ul>
-                <li>Arduino Uno with SD card shield</li>
-                <li>MicroSD card</li>
-                <li>Temperature and humidity sensor (DHT22)</li>
-                <li>Light sensor (photoresistor)</li>
-                <li>Real-time clock module (RTC)</li>
-                <li>Breadboard and jumper wires</li>
+                <li>Create a simple script in Blockly</li>
+                <li>Learn and practice some of the programming basics:
+                    <ul>
+                        <li>Measure temperature using temp/RH sensor</li>
+                        <li>Measure relative humidity percentage using temp/RH sensor</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="lab-section materials">
+        <h2 class="lab-section-title">Software and Hardware</h2>
+        <div class="card">
+            <ul>
+                <li>BlocklyProp Solo</li>
+                <li>Activity Board</li>
+                <li>Parallax USB programming cable</li>
+                <li>Temperature & Humidity Sensor</li>
             </ul>
         </div>
     </div>
 
     <div class="lab-section">
-        <h2 class="lab-section-title">Lab Objectives</h2>
+        <h2 class="lab-section-title">Programming Assignment 1: Temperature Conversion</h2>
         <div class="card">
-            <p>By the end of this lab, you will be able to:</p>
+            <p>Create a script that:</p>
+            <ol>
+                <li>Gets a number from users. It is assumed the number is a temperature value, and</li>
+                <li>Gets the unit of the temperature (either F or C; F for Fahrenheit and C for Celsius).</li>
+                <li>Converts the temperature value to the other unit. For example, if users enter a temperature value in F, your code should convert it to Celsius and print it in the terminal.</li>
+            </ol>
+            <p>Save your code as: <span class="highlight">Lab4_YourInitials_temp_convertor</span> (e.g., Lab4_AM_temp_convertor)</p>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Programming Assignment 2: Sensor Data Reading</h2>
+        <div class="card">
+            <p>Create a script that:</p>
+            <ol>
+                <li>Reads temperature sensor data in Fahrenheit and assigns it to a variable (e.g., <code>temp_F</code>); please note that the sensor is connected to <strong>pin 14</strong>.</li>
+                <li>Reads RH in percentage and assigns it to a variable (e.g., <code>rh</code>),</li>
+                <li>Prints temperature in F and C in the terminal (you may use the code you wrote for the previous assignment). For example:
+                    <pre>Temp: 72 F
+Temp: 22.22 C</pre>
+                </li>
+                <li>Prints RH in the terminal with its unit (e.g., <code>RH = 50 %</code>).</li>
+                <li>Makes decisions based on the temperature:
+                    <ul>
+                        <li>If <code>temp_F > 70</code>:
+                            <ul>
+                                <li>Print "Turn on AC"</li>
+                                <li>Turn on the built-in LED light connected to P26 and make it blink every 300 ms.</li>
+                            </ul>
+                        </li>
+                        <li>If <code>temp_F ≤ 70</code>:
+                            <ul>
+                                <li>Print "Turn on the heater"</li>
+                                <li>Turn on the built-in LED light connected to P27 and make it blink every 300 ms.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+            <p><strong>Note:</strong> We selected this threshold to ensure that one of the conditions is always true. If it is, it will print something in the terminal, and one of the LEDs will turn on.</p>
+            <p>Save your code as: <span class="highlight">Lab4_YourInitials_temp_rh_measurements</span> (e.g., Lab4_AM_temp_rh_measurements)</p>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Step-by-Step Tutorial</h2>
+        
+        <div class="step">
+            <h3 class="step-title">Temperature Conversion - Program Structure</h3>
+            <p>The script should have two main blocks:</p>
             <ul>
-                <li>Set up data logging with SD card</li>
-                <li>Implement timestamping with RTC</li>
-                <li>Create CSV data files</li>
-                <li>Handle data storage efficiently</li>
-                <li>Implement data collection intervals</li>
+                <li><strong>Main block</strong>, in which there are:
+                    <ul>
+                        <li>A continuous loop (use <em>repeat forever</em> block) asking users to enter:
+                            <ul>
+                                <li>A number (use <em>terminal receive</em> block) that represents temperature.</li>
+                                <li>A unit for the temperature (either F or C)</li>
+                            </ul>
+                        </li>
+                        <li>Call a function that converts the temperature to the other unit.</li>
+                        <li>At the beginning of this block, you may want to add a new line (use <em>terminal new line</em> block) and a text block that prompts users to enter a number (use <em>terminal print text</em> block).</li>
+                        <li>Add a block to pause for 3 seconds (use <em>pause (ms)</em> block).</li>
+                    </ul>
+                </li>
+                <li><strong>Your function block</strong>, which:
+                    <ul>
+                        <li>Converts the temperature to the other unit depending on what the users entered. You may want to use <em>if...else...</em> statement.</li>
+                        <li>Prints the outcome in the terminal (e.g., "72 degrees F is about 22.22 C.").</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">Temperature Conversion - Hints</h3>
+            <ul>
+                <li>To convert F to C, you can use the following equation:<br>
+                    <strong>Temp_in_C = (temp_F/10 – 32) x 5/9</strong><br>
+                    <strong>Note:</strong> You should first divide the sensor reading by 10.</li>
+                <li>BlocklyProp uses integer numbers. The floating point number option allows an integer value to be displayed as a decimal number. Since you may get float numbers after calculation, you may want to use a terminal print with float print in which you can define the number of digits (before the decimal) and the number of places (after the decimal).</li>
+            </ul>
+            
+            <img src="../assets/images/learning-modules/lab4_pic1.png" alt="Temperature Conversion Example" class="lab-image">
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">Sensor Data Reading - Program Structure</h3>
+            <p>The script should have two main blocks:</p>
+            <ul>
+                <li><strong>Main block</strong>:
+                    <ul>
+                        <li>At the beginning of this block (before the loop), you may want to define a pre-defined variable called <code>k</code> with a value of 1 (<code>k = 1</code>).</li>
+                        <li>Then, print in the terminal: <code>"Reading #" k</code><br>
+                            In the first iteration, it will print Reading # 1</li>
+                        <li>Increment <code>k</code> at the end of the loop (<code>k = k + 1</code>) or after the print statement. In this case, <code>k</code> will be updated at each iteration. So, in the second iteration, it will print Reading # 2</li>
+                        <li>A continuous loop (use <em>repeat forever</em> block) to read the sensor data
+                            <ul>
+                                <li>Please note that the sensor is connected to pin 14.</li>
+                                <li>Please clear the screen (use <em>Terminal clear screen</em> block)</li>
+                            </ul>
+                        </li>
+                        <li>Call a function that converts the temperature to Centigrade.</li>
+                        <li>Print the sensor data:
+                            <ul>
+                                <li>Print the reading number</li>
+                                <li>Print temperature in F</li>
+                                <li>Print temperature in C</li>
+                                <li>Print RH in percentage<br>
+                                    <strong>Note:</strong> The RH read by the sensor is 10 times more than the actual RH, so you should divide it by 10.</li>
+                            </ul>
+                        </li>
+                        <li>Print the outcome of the defined conditions (either turning on the AC or heater).</li>
+                        <li>Turn on one of the built-in LEDs based on the conditions mentioned above and make it blink 300 ms. If the condition is not true anymore, you should turn the LED off.</li>
+                        <li>Add a block to pause for 3 seconds (use <em>pause (ms)</em> block).</li>
+                        <li>After that, the terminal is deleted, and the new readings will be displayed.</li>
+                    </ul>
+                </li>
+                <li><strong>Your function block</strong>, which:
+                    <ul>
+                        <li>Converts the temperature from F to C.</li>
+                        <li>Please note that the temperature read by the sensor is 10 times more than the actual temperature. So you need to first divide it by 10 and then put it in the equation for the conversion.</li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
 
     <div class="lab-section">
-        <h2 class="lab-section-title">Coming Soon</h2>
+        <h2 class="lab-section-title">What to Submit</h2>
         <div class="card">
-            <p>This lab content is under development. Check back soon for the complete tutorial on data collection and storage.</p>
+            <p>Submit both programs saved as <strong>*.svg files</strong>:</p>
+            <ul>
+                <li>Temperature Conversion: Lab4_YourInitials_temp_convertor.svg</li>
+                <li>Sensor Data Reading: Lab4_YourInitials_temp_rh_measurements.svg</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Useful Resources</h2>
+        <div class="card">
+            <ul>
+                <li><a href="https://learn.parallax.com/support/reference/propeller-blocklyprop-block-reference" target="_blank">Propeller BlocklyProp Block Reference</a></li>
+                <li><a href="https://learn.parallax.com/support/reference/propeller-blocklyprop-block-reference/sensor/temp-humidity" target="_blank">Temp and RH sensor</a></li>
+                <li><a href="https://learn.parallax.com/support/reference/propeller-blocklyprop-block-reference/sensor/temp-humidity/temperature-humidity" target="_blank">Temperature & Humidity Sensor Wiring & Example Code</a></li>
+                <li><a href="https://learn.parallax.com/tutorials/language/blocklyprop/blink-light" target="_blank">Make LED light on/off</a></li>
+            </ul>
         </div>
     </div>
 </div>

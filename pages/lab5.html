@@ -1,11 +1,135 @@
-<h1 class="page-title">Lab 5: Wireless Communication</h1>
-<p class="page-subtitle">Connect devices wirelessly using various protocols</p>
+<h1 class="page-title">Lab 5: Distance Sensor and Audio Feedback</h1>
+<p class="page-subtitle">Class Activity - Create proximity-based audio alerts using laser ping sensor</p>
 
 <div class="lab-content">
-    <div class="lab-section">
-        <h2 class="lab-section-title">Coming Soon</h2>
+    <div class="lab-section learning-goals">
+        <h2 class="lab-section-title">Learning Goals</h2>
         <div class="card">
-            <p>This lab content is under development. Check back soon for the complete tutorial on wireless communication protocols.</p>
+            <ul>
+                <li>Work with laser ping distance sensor</li>
+                <li>Implement conditional logic based on sensor readings</li>
+                <li>Control audio output with different volume levels</li>
+                <li>Create proximity-based feedback system</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="lab-section materials">
+        <h2 class="lab-section-title">Software and Hardware</h2>
+        <div class="card">
+            <ul>
+                <li>BlocklyProp Solo</li>
+                <li>Activity Board</li>
+                <li>Parallax USB programming cable</li>
+                <li>Laser Ping Distance Sensor</li>
+                <li>SD card with audio files</li>
+                <li>Speaker/Audio output</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Programming Assignment</h2>
+        <div class="card">
+            <p>Create a script that:</p>
+            <ol>
+                <li>Reads laser ping sensor data in centimeters and assigns it to a variable (e.g., <code>distance</code>); please note the sensor is connected to <strong>pin 15</strong>.</li>
+                <li>Prints distance in centimeters in the terminal with its unit (e.g., <code>distance: 10 cm</code>).</li>
+                <li>Makes decisions based on the distance according to the conditions table below.</li>
+            </ol>
+            
+            <img src="../assets/images/learning-modules/lab5_pic1.png" alt="Laser Ping Sensor" class="lab-image">
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Conditional Logic Table</h2>
+        <div class="card">
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Conditions</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>If <code>distance ≥ 50 cm</code></td>
+                            <td>Nothing (speaker is OFF)<br>& Print(<code>"distance > 50"</code>) in terminal</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>If <code>30 ≤ distance < 50 cm</code></td>
+                            <td>Play a sound (e.g., <code>techloop.wav</code>) with volume 7<br>& Print(<code>"30 ≤ distance < 50"</code>) in terminal</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>If <code>distance < 30 cm</code></td>
+                            <td>Play a sound (e.g., <code>techloop.wav</code>) with volume 10<br>& Print(<code>"distance < 30"</code>) in terminal</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Step-by-Step Tutorial</h2>
+        
+        <div class="step">
+            <h3 class="step-title">1. Setting Up Audio Files</h3>
+            <ul>
+                <li>Download <code>techloop.wav</code> from Canvas, or you can download a sound from the <a href="https://learn.parallax.com/support/reference/sound-library" target="_blank">Sound Library</a></li>
+                <li>Paste the music files (<code>.wav</code>) onto the SD card of the activity board.</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">2. Reading Distance Sensor</h3>
+            <ul>
+                <li>Connect the laser ping sensor to <strong>pin 15</strong></li>
+                <li>Use the appropriate BlocklyProp block to read distance in centimeters</li>
+                <li>Store the reading in a variable called <code>distance</code></li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">3. Implementing Conditional Logic</h3>
+            <ul>
+                <li>Use if-else statements to check the three distance conditions</li>
+                <li>Print appropriate messages to the terminal for each condition</li>
+                <li>Control audio playback based on distance ranges</li>
+                <li>Set different volume levels (7 for medium range, 10 for close range)</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">4. Sample Code for Playing Music</h3>
+            <p>Use the following approach to play audio files:</p>
+            
+            <img src="../assets/images/learning-modules/lab5_pic2.png" alt="Sample Code for Playing Music" class="lab-image">
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">What to Submit</h2>
+        <div class="card">
+            <p>Submit your code saved as a <strong>*.svg file</strong> with appropriate naming convention:</p>
+            <p><span class="highlight">Lab5_YourInitials_DescriptiveName</span> (e.g., Lab5_AM_distance_audio)</p>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Useful Resources</h2>
+        <div class="card">
+            <ul>
+                <li><a href="https://learn.parallax.com/support/reference/sound-library" target="_blank">Sound Library</a></li>
+                <li><a href="https://learn.parallax.com/support/reference/sound-library" target="_blank">Play Music Documentation</a></li>
+                <li><a href="https://learn.parallax.com/support/reference/propeller-blocklyprop-block-reference" target="_blank">Propeller BlocklyProp Block Reference</a></li>
+            </ul>
         </div>
     </div>
 </div>

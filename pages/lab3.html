@@ -1,40 +1,161 @@
-<h1 class="page-title">Lab 3: Actuators</h1>
-<p class="page-subtitle">Control LEDs, motors, and other output devices</p>
+<h1 class="page-title">Lab 3: Advanced Blockly Programming</h1>
+<p class="page-subtitle">Temperature conversion and password evaluation with advanced programming concepts</p>
 
 <div class="lab-content">
-    <div class="lab-section">
-        <h2 class="lab-section-title">Required Materials</h2>
+    <div class="lab-section learning-goals">
+        <h2 class="lab-section-title">Learning Goals</h2>
         <div class="card">
             <ul>
-                <li>Arduino Uno or similar microcontroller</li>
-                <li>Breadboard and jumper wires</li>
-                <li>LEDs (various colors)</li>
-                <li>Servo motor</li>
-                <li>Buzzer</li>
-                <li>220Ω resistors</li>
-                <li>USB cable</li>
+                <li>Create a simple script in Blockly</li>
+                <li>Learn and practice some of the programming basics:
+                    <ul>
+                        <li>Defining a variable</li>
+                        <li>if statement for logical comparison</li>
+                        <li>Loop</li>
+                        <li>Function</li>
+                        <li>Boolean comparison</li>
+                        <li>Break a for loop</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="lab-section materials">
+        <h2 class="lab-section-title">Software and Hardware</h2>
+        <div class="card">
+            <ul>
+                <li>BlocklyProp Solo</li>
+                <li>Activity Board</li>
+                <li>Parallax USB programming cable</li>
             </ul>
         </div>
     </div>
 
     <div class="lab-section">
-        <h2 class="lab-section-title">Lab Objectives</h2>
+        <h2 class="lab-section-title">Programming Assignment 1: Temperature Conversion</h2>
         <div class="card">
-            <p>By the end of this lab, you will be able to:</p>
+            <p>Create a script that:</p>
+            <ol>
+                <li>Gets a number from users. It is assumed the number is a temperature value, and</li>
+                <li>Gets the unit of the temperature (either F or C; F for Fahrenheit and C for Celsius).</li>
+                <li>Converts the temperature value to the other unit. For example, if users enter a temperature value in F, your code should convert it to Celsius and print it in the terminal.</li>
+            </ol>
+            <p>Save your code as: <span class="highlight">Lab3_YourInitials_temp_converter</span> (e.g., Lab3_AM_temp_converter)</p>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Programming Assignment 2: Password Evaluator</h2>
+        <div class="card">
+            <p>Create a script that:</p>
             <ul>
-                <li>Control multiple LEDs with different patterns</li>
-                <li>Control servo motor position</li>
-                <li>Generate sounds with a buzzer</li>
-                <li>Create interactive feedback systems</li>
-                <li>Combine sensors and actuators</li>
+                <li>Define a password (e.g., TAE30!)</li>
+                <li>Prompt the user to enter the password</li>
+                <li>If the pass is correct, print the pass is correct in the terminal.</li>
+                <li>If the pass is not correct, print the pass is incorrect in the terminal and give the user another chance.</li>
+                <li>If a user enters the password incorrectly three times, print in the terminal that the account is locked and don't allow to try more!</li>
+            </ul>
+            <p>Save your code as: <span class="highlight">Lab3_YourInitials_pass</span> (e.g., Lab3_AM_pass)</p>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Step-by-Step Tutorial</h2>
+        
+        <div class="step">
+            <h3 class="step-title">Temperature Conversion - Program Structure</h3>
+            <p>The script should have two main blocks:</p>
+            <ul>
+                <li><strong>Main block</strong>, in which there are:
+                    <ul>
+                        <li>A continuous loop (use <em>repeat forever</em> block) asking users to enter:
+                            <ul>
+                                <li>A number (use <em>terminal receive</em> block) that represents temperature.</li>
+                                <li>A unit for the temperature (either F or C)</li>
+                            </ul>
+                        </li>
+                        <li>Call a function that converts the temperature to the other unit.</li>
+                        <li>At the beginning of this block, you may want to add a new line (use <em>terminal new line</em> block) and a text block that prompts users to enter a number (use <em>terminal print text</em> block).</li>
+                        <li>Add a block to pause for 3 seconds (use <em>pause (ms)</em> block).</li>
+                    </ul>
+                </li>
+                <li><strong>Your function block</strong>, which:
+                    <ul>
+                        <li>Converts the temperature to the other unit depending on what the users entered. You may want to use if…else… statement.</li>
+                        <li>Prints the outcome in the terminal (e.g., "72 degrees F is about 22.22 C.").</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">Temperature Conversion - Hints</h3>
+            <ul>
+                <li>To convert F to C, you can use the following equation:<br>
+                    <strong>Temp_in_C = (temp_in_F – 32) x 5/9</strong></li>
+                <li>You can derive another equation to convert C to F.</li>
+                <li>Please make sure to use parenthesis to do the calculations in the proper order.</li>
+                <li>BlocklyProp uses integer numbers. The floating point number option allows an integer value to be displayed as a decimal number. Since you may get float numbers after calculation, you may want to use terminal print with float print in which you can define the number of digits (before the decimal) and the number of places (after the decimal).</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">Password Evaluator - Program Structure</h3>
+            <p>The script should have two main blocks:</p>
+            <ul>
+                <li><strong>Main block</strong>, in which there are:
+                    <ul>
+                        <li>A statement for setting a password (e.g., my_pass = "TAE30!") and other required statements</li>
+                        <li>Call a function that evaluates the password.</li>
+                        <li>Comments as needed.</li>
+                    </ul>
+                </li>
+                <li><strong>Your function block</strong>, which:
+                    <ul>
+                        <li>Prompts users to enter a password.</li>
+                        <li>Evaluates if the entered password is correct by comparing it to the set password ("TAE30!").</li>
+                        <li>Prints an appropriate statement in the terminal accordingly.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">Password Evaluator - Hints</h3>
+            <ul>
+                <li>Password evaluation can be done in a for loop (repeat) for three times.</li>
+                <li>If the password is correct, we should exit the loop, as there is no need for another attempt.</li>
+                <li>If the password is incorrect, print an appropriate statement in the terminal and prompt the user to enter a new password (another attempt).</li>
+                <li>You should keep track of the number of attempts. If the number of attempts reaches the defined threshold (e.g., 3), print a statement in the terminal and stop the process (users are not allowed to enter a new password).</li>
+                <li>To keep track of the number of attempts, you can increment a variable that is pre-defined to zero before entering the for loop. Each time the user enters a password, the pre-defined variable is incremented by one until it becomes equal to the threshold (e.g., 3).</li>
             </ul>
         </div>
     </div>
 
     <div class="lab-section">
-        <h2 class="lab-section-title">Coming Soon</h2>
+        <h2 class="lab-section-title">What to Submit</h2>
         <div class="card">
-            <p>This lab content is under development. Check back soon for the complete tutorial on working with actuators.</p>
+            <p>Submit both programs saved as <strong>*.svg files</strong>:</p>
+            <ul>
+                <li>Temperature Conversion: Lab3_YourInitials_temp_converter.svg</li>
+                <li>Password Evaluator: Lab3_YourInitials_pass.svg</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Useful Resources</h2>
+        <div class="card">
+            <ul>
+                <li><a href="https://learn.parallax.com/support/reference/propeller-blocklyprop-block-reference" target="_blank">Propeller BlocklyProp Block Reference</a></li>
+                <li><a href="https://learn.parallax.com/tutorials/language/blocklyprop/simple-blocklyprop-programs-propeller-boards/variable-blocks" target="_blank">Variable Blocks</a></li>
+                <li><a href="https://learn.parallax.com/tutorials/language/blocklyprop/simple-blocklyprop-programs-propeller-boards/terminal-talk" target="_blank">Terminal Talk</a></li>
+                <li><a href="https://learn.parallax.com/tutorials/language/blocklyprop/simple-blocklyprop-programs-propeller-boards/values-and-math-blocks" target="_blank">Values and Math Blocks</a></li>
+                <li><a href="https://learn.parallax.com/tutorials/language/blocklyprop/simple-blocklyprop-programs-propeller-boards/making-decisions" target="_blank">Making Decisions</a></li>
+                <li><a href="https://learn.parallax.com/tutorials/language/blocklyprop/simple-blocklyprop-programs-propeller-boards/blocks-repeat" target="_blank">Blocks that Repeat</a></li>
+                <li><a href="https://learn.parallax.com/support/reference/propeller-blocklyprop-block-reference/functions" target="_blank">Functions</a></li>
+            </ul>
         </div>
     </div>
 </div>

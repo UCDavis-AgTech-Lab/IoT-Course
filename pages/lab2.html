@@ -1,32 +1,46 @@
-<h1 class="page-title">Lab 2: Sensors Basics</h1>
-<p class="page-subtitle">Working with temperature, humidity, and light sensors</p>
+<h1 class="page-title">Lab 2: Blockly Programming</h1>
+<p class="page-subtitle">Learn programming basics with variables, if statements, loops, and functions</p>
 
 <div class="lab-content">
-    <div class="lab-section">
-        <h2 class="lab-section-title">Required Materials</h2>
+    <div class="lab-section learning-goals">
+        <h2 class="lab-section-title">Learning Goals</h2>
         <div class="card">
             <ul>
-                <li>Arduino Uno or similar microcontroller</li>
-                <li>Breadboard and jumper wires</li>
-                <li>DHT11 or DHT22 temperature and humidity sensor</li>
-                <li>Photoresistor (LDR)</li>
-                <li>10kΩ resistor</li>
-                <li>USB cable</li>
+                <li>Create a simple script in Blockly</li>
+                <li>Learn and practice some of the programming basics:
+                    <ul>
+                        <li>Defining a variable</li>
+                        <li>if statement for logical comparison</li>
+                        <li>Loop</li>
+                        <li>Function</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="lab-section materials">
+        <h2 class="lab-section-title">Software and Hardware</h2>
+        <div class="card">
+            <ul>
+                <li>BlocklyProp Solo</li>
+                <li>Activity Board</li>
+                <li>Parallax USB programming cable</li>
             </ul>
         </div>
     </div>
 
     <div class="lab-section">
-        <h2 class="lab-section-title">Lab Objectives</h2>
+        <h2 class="lab-section-title">Instructions</h2>
         <div class="card">
-            <p>By the end of this lab, you will be able to:</p>
-            <ul>
-                <li>Understand how different sensors work</li>
-                <li>Connect temperature, humidity, and light sensors to Arduino</li>
-                <li>Read and process sensor data</li>
-                <li>Display sensor readings</li>
-                <li>Implement basic threshold detection</li>
-            </ul>
+            <p>Create a script that:</p>
+            <ol>
+                <li>Gets a number from users, and</li>
+                <li>Identifies if the number is odd or even.</li>
+                <li>Prints the outcome in the terminal (e.g., "This is an EVEN number!")</li>
+            </ol>
+            <p>Save your code on your computer periodically.</p>
+            <p><strong>Submit your code saved as a *.svg file.</strong></p>
         </div>
     </div>
 
@@ -34,67 +48,63 @@
         <h2 class="lab-section-title">Step-by-Step Tutorial</h2>
         
         <div class="step">
-            <h3 class="step-title">1. Understanding Sensors</h3>
-            <p>Sensors are devices that detect and measure physical properties from the environment and convert them into electrical signals.</p>
+            <h3 class="step-title">Program Structure</h3>
+            <p>The script should have two main blocks:</p>
             <ul>
-                <li><strong>DHT11/DHT22:</strong> Digital temperature and humidity sensor</li>
-                <li><strong>Photoresistor (LDR):</strong> Light-dependent resistor that changes resistance based on light intensity</li>
+                <li><strong>Main block</strong>, in which there are:
+                    <ul>
+                        <li>A continuous loop (use <em>repeat forever</em> block) asking users to enter a number (use <em>terminal receive</em> block).</li>
+                        <li>Call a function that identifies if this is an even or odd number.</li>
+                        <li>At the beginning of this block, you may want to add a new line (use <em>terminal new line</em> block) and a text block that prompts users to enter a number (use <em>terminal print text</em> block).</li>
+                    </ul>
+                </li>
+                <li><strong>Your function block</strong>, which:
+                    <ul>
+                        <li>Identifies if this is an odd or even number.</li>
+                        <li>Prints the outcome in the terminal (e.g., "This is an ODD/EVEN number.").</li>
+                    </ul>
+                </li>
             </ul>
         </div>
 
         <div class="step">
-            <h3 class="step-title">2. Connecting the DHT Sensor</h3>
-            <p>Connect the DHT11 or DHT22 sensor to your Arduino:</p>
-            <ol>
-                <li>Connect VCC pin to 3.3V or 5V on Arduino</li>
-                <li>Connect GND pin to GND on Arduino</li>
-                <li>Connect DATA pin to digital pin 2 on Arduino</li>
-                <li>Add a 10kΩ pull-up resistor between VCC and DATA pins</li>
-            </ol>
-        </div>
-
-        <div class="step">
-            <h3 class="step-title">3. Reading Temperature and Humidity</h3>
-            <p>Create a program to read temperature and humidity data:</p>
-            <ol>
-                <li>In BlocklyProp Solo, create a new project</li>
-                <li>Add the DHT sensor library blocks</li>
-                <li>Initialize the DHT sensor on pin 2</li>
-                <li>Read temperature and humidity values in a loop</li>
-                <li>Display the values using serial communication</li>
-            </ol>
-        </div>
-
-        <div class="step">
-            <h3 class="step-title">4. Adding Light Sensor</h3>
-            <p>Connect and program the photoresistor:</p>
-            <ol>
-                <li>Connect one leg of the photoresistor to analog pin A0</li>
-                <li>Connect the other leg to 5V</li>
-                <li>Connect a 10kΩ resistor from A0 to GND (voltage divider)</li>
-                <li>Read the analog value and convert to light intensity</li>
-            </ol>
-        </div>
-
-        <div class="step">
-            <h3 class="step-title">5. Implementing Threshold Detection</h3>
-            <p>Add logic to trigger actions based on sensor readings:</p>
-            <ol>
-                <li>Set temperature thresholds (e.g., too hot > 25°C)</li>
-                <li>Set light thresholds (e.g., dark < 300)</li>
-                <li>Use conditional blocks to trigger LED indicators</li>
-                <li>Test different environmental conditions</li>
-            </ol>
+            <h3 class="step-title">Programming Hints</h3>
+            <ul>
+                <li>To identify if a number is odd or even, you need to check the remainder when you divide the number by 2. If a number is evenly divisible by 2 with no remainder (remainder is equal to zero), then it is even, otherwise, it is odd (remainder is not equal to zero). You can use the <em>math operation</em> block and change it to <em>remainder after division</em> in the mutation window (gear icon).</li>
+            </ul>
+            
+            <img src="../assets/images/learning-modules/lab2_pic1.png" alt="Math Operation Block" class="lab-image">
+            
+            <ul>
+                <li>Use if statement to check if the remainder is equal to zero or not:
+                    <ul>
+                        <li>If remainder = 0 → this is an even number.</li>
+                        <li>If remainder ≠ 0 → this is an odd number.</li>
+                    </ul>
+                </li>
+                <li>You may want to add comments to your code to make your code more readable, make code maintenance much easier, and help others better understand your code.</li>
+            </ul>
         </div>
     </div>
 
     <div class="lab-section">
-        <h2 class="lab-section-title">Additional Resources</h2>
+        <h2 class="lab-section-title">What to Submit</h2>
+        <div class="card">
+            <p>Submit your code saved as a <strong>*.svg file</strong>.</p>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Useful Resources</h2>
         <div class="card">
             <ul>
-                <li><a href="https://learn.adafruit.com/dht" target="_blank">DHT Sensor Guide</a></li>
-                <li><a href="https://www.arduino.cc/en/Tutorial/AnalogReadSerial" target="_blank">Analog Read Tutorial</a></li>
-                <li><a href="#resources">Course Resources</a></li>
+                <li><a href="https://learn.parallax.com/support/reference/propeller-blocklyprop-block-reference" target="_blank">Propeller BlocklyProp Block Reference</a></li>
+                <li><a href="https://learn.parallax.com/tutorials/language/blocklyprop/simple-blocklyprop-programs-propeller-boards/variable-blocks" target="_blank">Variable Blocks</a></li>
+                <li><a href="https://learn.parallax.com/tutorials/language/blocklyprop/simple-blocklyprop-programs-propeller-boards/terminal-talk" target="_blank">Terminal Talk</a></li>
+                <li><a href="https://learn.parallax.com/tutorials/language/blocklyprop/simple-blocklyprop-programs-propeller-boards/values-and-math-blocks" target="_blank">Values and Math Blocks</a></li>
+                <li><a href="https://learn.parallax.com/tutorials/language/blocklyprop/simple-blocklyprop-programs-propeller-boards/making-decisions" target="_blank">Making Decisions</a></li>
+                <li><a href="https://learn.parallax.com/tutorials/language/blocklyprop/simple-blocklyprop-programs-propeller-boards/blocks-repeat" target="_blank">Blocks that Repeat</a></li>
+                <li><a href="https://learn.parallax.com/support/reference/propeller-blocklyprop-block-reference/functions" target="_blank">Functions</a></li>
             </ul>
         </div>
     </div>

@@ -230,6 +230,9 @@ class TAE30Website {
             if (footer) footer.style.marginLeft = '0';
         }
         
+        // Scroll to top when switching sections
+        window.scrollTo(0, 0);
+        
         this.currentSection = sectionId;
     }
 
@@ -276,17 +279,21 @@ class TAE30Website {
 
     getSectionTitle(sectionId) {
         const titles = {
-            'lab1': 'Lab 1: Introduction to IoT',
-            'lab2': 'Lab 2: Sensors Basics',
-            'lab3': 'Lab 3: Actuators',
-            'lab4': 'Lab 4: Data Collection',
-            'lab5': 'Lab 5: Wireless Communication',
-            'lab6': 'Lab 6: Cloud Integration',
-            'lab7': 'Lab 7: Data Visualization',
-            'lab8': 'Lab 8: Edge Computing',
-            'lab9': 'Lab 9: IoT Security',
-            'lab10': 'Lab 10: Final Project',
+            'lab1': 'Lab 1: Installing BlocklyProp Solo',
+            'lab2': 'Lab 2: Blockly Programming',
+            'lab3': 'Lab 3: Advanced Blockly Programming',
+            'lab4': 'Lab 4: Temperature and Humidity',
+            'lab5': 'Lab 5: Distance Sensor & Audio',
+            'lab6': 'Lab 6: Coming Soon',
+            'lab7': 'Lab 7: Coming Soon',
+            'lab8': 'Lab 8: Coming Soon',
+            'lab9': 'Lab 9: Coming Soon',
+            'lab10': 'Lab 10: Smart Pot Project',
             'syllabus': 'Course Syllabus',
+            'hardware': 'Hardware Overview',
+            'hardware-board-overview': 'Parallax Propeller Board Overview',
+            'hardware-board-details': 'Propeller Activity Board WX Details',
+            'hardware-custom-board': 'Custom Green Board',
             'resources': 'Resources',
             'faq': 'Frequently Asked Questions'
         };
@@ -422,7 +429,16 @@ class TAE30Website {
     }
 }
 
+// Global function for loading pages (used by hardware sub-navigation)
+window.loadPage = function(pageId) {
+    const website = window.tae30Website;
+    if (website) {
+        website.showSection(pageId);
+        history.pushState(null, null, `#${pageId}`);
+    }
+};
+
 // Initialize the website when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    new TAE30Website();
+    window.tae30Website = new TAE30Website();
 });

@@ -1,32 +1,197 @@
-<h1 class="page-title">Lab 10: Final Project</h1>
-<p class="page-subtitle">Build a complete IoT system</p>
+<h1 class="page-title">Lab 10: Smart Pot Final Project</h1>
+<p class="page-subtitle">A small-scale controlled environment system for plants</p>
 
 <div class="lab-content">
-    <div class="lab-section">
-        <h2 class="lab-section-title">Project Overview</h2>
+    <div class="lab-section learning-goals">
+        <h2 class="lab-section-title">Learning Goals</h2>
         <div class="card">
-            <p>The final project is your opportunity to demonstrate everything you've learned throughout the course by building a complete IoT system that addresses a real-world problem.</p>
+            <p>The overall objective of this project is to develop a smart pot as a small-scale controlled environment system for a plant to detect various environmental factors and make decisions to achieve the desired environment for the plant to grow. The IoT system includes multiple sensors and actuators that will interact with the plant. The sensing part comprises temperature and relative humidity, PAR, and soil moisture sensors. The actuators are a servo motor, an irrigation pump, an LED, and a lamp.</p>
+            
+            <p>The learning goal is to learn and practice:</p>
+            <ul>
+                <li>Creating scripts and functions in Blockly</li>
+                <li>How to read data from multiple sensors</li>
+                <li>How to make decisions based on sensors' data and user-defined values (set points)</li>
+                <li>How to activate and control multiple actuators</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="lab-section materials">
+        <h2 class="lab-section-title">Software and Hardware</h2>
+        <div class="card">
+            <ul>
+                <li>BlocklyProp Solo</li>
+                <li>Activity Board and Parallax USB programming cable</li>
+                <li>PAR sensor</li>
+                <li>Temperature/RH sensor</li>
+                <li>Soil moisture sensor</li>
+                <li>Servo motor</li>
+                <li>Pump (peristaltic pump)</li>
+                <li>Outlet Power Relay Module</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Project Description</h2>
+        <div class="card">
+            <p>This project provides the opportunity to integrate several assignments we have been working on during the quarter. To control and achieve the desired growth environment for plants, we need to develop a program that prompts users to enter the desired values (set points or thresholds) for each parameter we will control. Additionally, it should constantly read the sensor data. Then, it should activate the actuators based on the input data from the users and sensors.</p>
+            
+            <img src="../assets/images/learning-modules/project_flow.png" alt="Smart Pot System Flowchart" class="lab-image">
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Programming Structure</h2>
+        <div class="card">
+            <p>The code includes a main block and eight function blocks as follows:</p>
+            
+            <h3>Main Block</h3>
+            <ul>
+                <li>Define a variable called "iteration" and set it to 1.</li>
+                <li>Get set points from users and save them as variables:
+                    <ul>
+                        <li>Temperature set point (threshold) saved as "temp_threshold"</li>
+                        <li>Relative humidity set point saved as "rh_threshold"</li>
+                        <li>PAR set point saved as "par_threshold"</li>
+                        <li>Soil moisture set point saved as "moisture_threshold"</li>
+                    </ul>
+                </li>
+                <li>A forever repeat block:
+                    <ul>
+                        <li>Print the iteration variable to show how many measurements we have done so far.</li>
+                        <li>Call functions:
+                            <ul>
+                                <li><em>temp_sensor</em> function to read the temperature value</li>
+                                <li><em>rh_sensor</em> function to read the RH value</li>
+                                <li><em>par_sensor</em> function to read the intensity of ambient light</li>
+                                <li><em>moisture_sensor</em> function to read the soil moisture</li>
+                                <li><em>led_light</em> function to turn on LED 26 based on temperature</li>
+                                <li><em>servo_motor</em> function to rotate servo motor based on RH</li>
+                                <li><em>light_source</em> function to turn the light source ON and OFF based on PAR</li>
+                                <li><em>irrigation_pump</em> function to turn the pump ON and OFF based on soil moisture</li>
+                            </ul>
+                        </li>
+                        <li>Pause 3000 ms</li>
+                        <li>Increment iteration variable</li>
+                        <li>Clear the terminal</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Control Logic</h2>
+        <div class="card">
+            <p>The following table shows what actions should be taken based on the inputs from users and sensors:</p>
+            
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Condition</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Temperature > threshold defined by users</td>
+                            <td>Turn on the LED connected to pin 26, assuming we are turning a fan ON. Otherwise, turn off the LED light.</td>
+                        </tr>
+                        <tr>
+                            <td>Relative humidity > threshold defined by users</td>
+                            <td>Rotate the servo motor 90 degrees, assuming the motor is opening a window in a greenhouse. Otherwise, set the angle to 0 degrees (closing the gate).</td>
+                        </tr>
+                        <tr>
+                            <td>Soil moisture < threshold defined by users</td>
+                            <td>Turn on the pump until the soil moisture returns to the desired level. The pump is connected to "relay 1". Otherwise, turn off the pump.</td>
+                        </tr>
+                        <tr>
+                            <td>PAR < threshold defined by users</td>
+                            <td>Turn on the light source connected to "relay 2". Otherwise, turn off the light source.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Pin Assignments</h2>
+        <div class="card">
+            <p>The following table presents the pin number associated with each sensor and actuator:</p>
+            
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sensor/Actuator</th>
+                            <th>Pin</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Temp/RH sensor</td>
+                            <td>Pin 14</td>
+                        </tr>
+                        <tr>
+                            <td>Soil moisture sensor connected to the general socket</td>
+                            <td>Pin AD2 (analog to digital 2)</td>
+                        </tr>
+                        <tr>
+                            <td>PAR sensor</td>
+                            <td>Pin AD3 (analog to digital 3)</td>
+                        </tr>
+                        <tr>
+                            <td>Servo motor</td>
+                            <td>Pin 16 and 17</td>
+                        </tr>
+                        <tr>
+                            <td>Pump (connected to relay module "relay 1" socket)</td>
+                            <td>Pin 13</td>
+                        </tr>
+                        <tr>
+                            <td>Light source (connected to relay module "relay 2" socket)</td>
+                            <td>Pin 12</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
     <div class="lab-section">
         <h2 class="lab-section-title">Project Requirements</h2>
         <div class="card">
+            <h3>What to Submit:</h3>
             <ul>
-                <li>Use at least 3 different sensors</li>
-                <li>Include at least 2 actuators</li>
-                <li>Implement wireless communication</li>
-                <li>Include data logging and visualization</li>
-                <li>Address a real agricultural or environmental problem</li>
-                <li>Present your solution to the class</li>
+                <li>Submit your code saved as a <strong>*.svg file</strong> with naming convention: <span class="highlight">project_firstName_lastName.svg</span> (e.g., project_ali_moghimi.svg)</li>
+                <li>A photo of your system</li>
+                <li>A short video of your system while working (OPTIONAL)</li>
+            </ul>
+            
+            <h3>Important Notes:</h3>
+            <ul>
+                <li>The project is worth <strong>20% of the total course grade</strong></li>
+                <li>Save your code on your computer periodically</li>
+                <li>Test your system thoroughly before submission</li>
+                <li>You need to return all the equipment you borrowed by the specified deadline</li>
             </ul>
         </div>
     </div>
 
     <div class="lab-section">
-        <h2 class="lab-section-title">Coming Soon</h2>
+        <h2 class="lab-section-title">System Integration Tips</h2>
         <div class="card">
-            <p>Detailed project guidelines and examples will be provided. Check back soon for the complete final project specifications.</p>
+            <ul>
+                <li><strong>Start Early:</strong> This project integrates concepts from all previous labs</li>
+                <li><strong>Test Components:</strong> Test each sensor and actuator individually before integration</li>
+                <li><strong>Debug Systematically:</strong> Use terminal output to monitor sensor readings and system decisions</li>
+                <li><strong>Calibrate Sensors:</strong> Ensure sensor readings are accurate for your environment</li>
+                <li><strong>Document Your Work:</strong> Keep notes on your design decisions and troubleshooting steps</li>
+            </ul>
         </div>
     </div>
 </div>

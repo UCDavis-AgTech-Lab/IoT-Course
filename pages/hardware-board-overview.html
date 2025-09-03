@@ -1,0 +1,108 @@
+<h1 class="page-title">Parallax Propeller Board Overview</h1>
+<p class="page-subtitle">Key features and setup guide for the Parallax Propeller Activity Board WX</p>
+
+<div class="lab-content">
+    <div class="lab-section">
+        <h2 class="lab-section-title">Introduction</h2>
+        <div class="card">
+            <p>The Parallax Propeller Activity Board WX is an affordable and fully-featured development board designed for Propeller projects. It comes equipped with a mini solderless breadboard, expanded I/O headers, and both 3.3V and 5V power regulators, allowing users to easily build Kickstart demonstration projects or Propeller C tutorials.</p>
+            
+            <img src="../assets/images/hardware/board.png" alt="Parallax Propeller Board" class="lab-image">
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Key Features</h2>
+        
+        <div class="step">
+            <h3 class="step-title">Integrated Solderless Breadboard</h3>
+            <p>The board includes a mini solderless breadboard, facilitating projects with short jumper wires like the 100mm Male-Male Jumper Wires.</p>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">Power Options</h3>
+            <ul>
+                <li><strong>USB Cable:</strong> Power can be supplied via a USB cable during programming and testing. Note that USB ports typically provide up to 500 mA of current.</li>
+                <li><strong>Separate Power Supply:</strong> Alternatively, a 6-9 volt battery pack or a power adapter delivering at least 1 amp at 6 to 9 volts can be used when untethered from a computer.</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">3-Position Power Switch</h3>
+            <p>The board features a 3-position switch to control power distribution:</p>
+            <ul>
+                <li><strong>Position 0:</strong> Removes power from all power pin connections.</li>
+                <li><strong>Position 1:</strong> Applies power to the breadboard power pins, excluding the six servo headers.</li>
+                <li><strong>Position 2:</strong> Applies power to both the breadboard pins and the servo headers.</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">Using Servo Headers</h3>
+            <p>The servo headers facilitate easy testing of Parallax continuous or standard servo motors. Additional information is available in the documentation.</p>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">Adapting Wiring Diagrams</h3>
+            <p>Wiring diagrams from Kickstart projects can be adapted for use with the Propeller Activity Board. Depending on the original diagram, you may need to make minor adjustments for pin connections.</p>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Wi-Fi Module Integration</h2>
+        <div class="card">
+            <p>This Wi-Fi module connects to your Propeller Activity Board, allowing you to open up the possibility of projects using interactive internet and web features.</p>
+            
+            <img src="../assets/images/hardware/wifi.png" alt="WiFi Module" class="lab-image">
+        </div>
+        
+        <div class="step">
+            <h3 class="step-title">Wi-Fi Module Firmware</h3>
+            <ol>
+                <li>Go to the Parallax Wi-Fi Module Firmware and Example Files <a href="https://www.parallax.com/downloads/parallax-wi-fi-module-firmware-and-example-files" target="_blank">download page</a></li>
+                <li>Download the most recent version (highest version number) 32420-Parallax-ESP…zip</li>
+                <li>Unzip to a folder and make sure the words Parallax ESP and the version number are in the folder name</li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">Connect Wi-Fi Module to Propeller Board</h3>
+            <ol>
+                <li>Set the board's power switch to 1</li>
+                <li>Run an example program to test the module's firmware and communication with the Propeller board</li>
+                <li>Set the board's power switch to 0</li>
+                <li>Make sure the corners of the module with white triangles are to the left</li>
+                <li>Line up the module pins with the sockets</li>
+                <li>Press down firmly so that the Wi-Fi module sinks into the socket</li>
+            </ol>
+            
+            <img src="../assets/images/hardware/wiring-Wifi-ABWX.png" alt="WiFi Module Wiring" class="lab-image">
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Getting Started Steps</h2>
+        <div class="card">
+            <ol>
+                <li><strong>Join Module's Wi-Fi</strong> - Connect to the module's network</li>
+                <li><strong>Update Module Firmware</strong> - Ensure latest firmware version</li>
+                <li><strong>Configure Module Communication</strong> - Set up communication parameters</li>
+                <li><strong>Program the Propeller over Wi-Fi</strong> - Wireless programming capability</li>
+                <li><strong>Load and View a Test Page</strong> - Verify web connectivity</li>
+                <li><strong>Test the Propeller to Webpage Communication</strong> - Confirm bidirectional communication</li>
+                <li><strong>Join another Wi-Fi Network</strong> - Connect to existing networks</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Additional Resources</h2>
+        <div class="card">
+            <ul>
+                <li><a href="https://learn.parallax.com/support/reference/using-propeller-activity-board" target="_blank">Official Parallax Activity Board Guide</a></li>
+                <li><a href="https://www.parallax.com/downloads/parallax-wi-fi-module-firmware-and-example-files" target="_blank">Wi-Fi Module Firmware Downloads</a></li>
+                <li><a href="#" onclick="loadPage('hardware-board-details'); return false;">Detailed Board Breakdown →</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

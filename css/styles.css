@@ -662,6 +662,38 @@ code {
     margin-bottom: 10px;
 }
 
+.learning-goals .lab-section-title,
+.materials .lab-section-title {
+    background-color: #008080;
+    color: white;
+    padding: 10px;
+    margin: 0;
+    border-radius: 5px 5px 0 0;
+}
+
+.learning-goals .card,
+.materials .card {
+    margin-top: 0;
+    border-radius: 0 0 5px 5px;
+}
+
+.lab-image {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: block;
+}
+
+.highlight {
+    background-color: #008080;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
 .image-container {
     margin: 20px 0;
     text-align: center;
