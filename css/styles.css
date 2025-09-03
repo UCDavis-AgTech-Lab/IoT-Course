@@ -152,7 +152,7 @@ a:hover {
 .sidebar-toggle {
     position: fixed;
     top: 50%;
-    left: 280px;
+    left: 360px;
     transform: translateY(-50%);
     background-color: var(--border-color);
     color: var(--text-color);
@@ -176,7 +176,7 @@ a:hover {
 }
 
 .sidebar.collapsed {
-    transform: translateX(-280px);
+    transform: translateX(-360px);
 }
 
 .sidebar.collapsed + .sidebar-toggle {
@@ -189,7 +189,7 @@ a:hover {
 
 /* Sidebar Styles */
 .sidebar {
-    width: 280px;
+    width: 360px;
     background-color: var(--sidebar-bg);
     border-right: 1px solid var(--border-color);
     position: fixed;
@@ -256,7 +256,7 @@ a:hover {
 /* Main Content Styles */
 .main-content {
     flex: 1;
-    margin-left: 280px;
+    margin-left: 360px;
     margin-top: 60px;
     padding: 30px;
     max-width: none;
@@ -446,7 +446,7 @@ code {
     padding: 20px;
     text-align: center;
     font-size: 14px;
-    margin-left: 280px;
+    margin-left: 360px;
     transition: margin-left 0.3s ease;
 }
 
@@ -497,7 +497,7 @@ code {
 @media (max-width: 768px) {
     .sidebar {
         transform: translateX(-100%);
-        width: 240px;
+        width: 280px;
         z-index: 1100;
     }
 
@@ -515,7 +515,7 @@ code {
     }
 
     .sidebar.active + .sidebar-toggle {
-        left: 240px;
+        left: 280px;
     }
 
     .main-content,
