@@ -1,11 +1,234 @@
-<h1 class="page-title">Lab 9: IoT Security</h1>
-<p class="page-subtitle">Implement security measures for IoT devices</p>
+<h1 class="page-title">Lab 9: IoT Dashboard</h1>
+<p class="page-subtitle">Build real-time data logging and web-based IoT dashboards</p>
 
 <div class="lab-content">
-    <div class="lab-section">
-        <h2 class="lab-section-title">Coming Soon</h2>
+    <div class="lab-section learning-goals">
+        <h2 class="lab-section-title">Learning Goals</h2>
         <div class="card">
-            <p>This lab content is under development. Check back soon for the complete tutorial on IoT security.</p>
+            <ul>
+                <li>Real-time data logging in Blockly: build a Blockly program that, once per second, prints iteration, temperature, humidity to the serial terminal in comma-separated format.</li>
+                <li>SD-card data capture: store the same iteration/temperature/humidity records on an SD card and practice moving the card to a computer to retrieve the file.</li>
+                <li>HTML IoT dashboard creation: use ChatGPT to generate an HTML page that lets you upload the CSV file and displays a concise summary of the data offline.</li>
+                <li>Live web publishing with the WX Wi-Fi Module: update and configure the WX module, then combine Simple IDE and your HTML to serve a real-time IoT dashboard over Wi-Fi.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="lab-section materials">
+        <h2 class="lab-section-title">Software and Hardware</h2>
+        <div class="card">
+            <ul>
+                <li>BlocklyProp Solo</li>
+                <li>Activity Board and Parallax USB programming cable</li>
+                <li>DHT22 Sensor</li>
+                <li>WX Wi-fi Module ESP8266</li>
+                <li>SD Card</li>
+                <li>SD Card Reader</li>
+                <li>Ruler or Measuring Tape</li>
+                <li>Notepad</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">DHT22 Temperature & Humidity Sensor</h2>
+        <div class="card">
+            <p>The DHT22 (also sold as AM2302) is a combined digital-output sensor that reports both ambient temperature (-40 °C -- 80 °C, ±0.5 °C) and relative humidity (0 -- 100 %, ±2 %). A built-in 12-bit ADC and calibrated signal processor let it stream accurate readings through a single‐wire data line---perfect for microcontroller projects that need reliable environmental data.</p>
+            
+            <h4>Connection Steps:</h4>
+            <ol>
+                <li>Locate the Temp / RH socket: On the Activity Board WX, the header is silkscreened "TEMP RH" and is internally mapped to I/O-pin 14.</li>
+                <li>Plug in the sensor: Slide the connector from the sensor cable straight onto the TEMP RH header.</li>
+            </ol>
+            
+            <img src="assets/images/learning-modules/Lab_9/image1.png" alt="Built-in card reader for microSD Card" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_9/image2.png" alt="DHT22 connected to Activity Board WX" class="lab-image">
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Blockly Coding for Saving Data</h2>
+        
+        <div class="step">
+            <h3 class="step-title">Setup and User Input</h3>
+            <ul>
+                <li>In terminal ask the user "How many measurements would you like to take?"</li>
+                <li>Drop a Terminal print text block for the question.</li>
+                <li>Follow it with a Terminal receive number block to capture the reply and store it in a variable (e.g., totalSamples).</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">Create the CSV File on SD Card</h3>
+            <ul>
+                <li>Insert an SD file open block: open---or create---data.csv in read-write mode.</li>
+                <li>Write a single header line to the file: iteration,temperature,humidity</li>
+                <li>Echo that same header to the Terminal so the user sees the column labels.</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">Main Measurement Loop</h3>
+            <p>Use a repeat ... times loop that runs exactly totalSamples times. Inside the loop, in this order:</p>
+            <ol>
+                <li>Take a reading: Drop a Temp & Humidity read PIN 14 block twice---once to fetch temperature (°F) and once for relative humidity (%).</li>
+                <li>Format the reading as CSV: Build a string that joins current iteration number, a comma, temperature, a comma, humidity.</li>
+                <li>Show it live: Use Terminal print to send that CSV line to the screen, followed by a newline.</li>
+                <li>Save it: Use SD file write to append the same line to data.csv, then add a newline so the next record starts fresh.</li>
+                <li>Increment the counter: Add 1 to your iteration variable.</li>
+                <li>Pause one second: Insert a pause (ms) 1000 block so readings are exactly one second apart.</li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">Wrap-up</h3>
+            <ul>
+                <li>After the loop finishes, close the CSV file with SD file close---this guarantees the data is written properly.</li>
+                <li>Print a friendly message such as "Logging complete. File saved to SD card." so the user knows the program is done.</li>
+            </ul>
+            
+            <img src="assets/images/learning-modules/Lab_9/image3.png" alt="Terminal transcript showing logged data" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_9/image4.png" alt="CSV file contents in Excel" class="lab-image">
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Blockly Saving Related Blocks</h2>
+        
+        <div class="step">
+            <h3 class="step-title">SD Card Programming Blocks</h3>
+            <img src="assets/images/learning-modules/Lab_9/image5.png" alt="SD File Open Block" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_9/image6.png" alt="Create String Block" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_9/image7.png" alt="Write Data Block" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_9/image8.png" alt="Newline Block" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_9/image9.png" alt="Close File Block" class="lab-image">
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Build HTML Dashboard with ChatGPT</h2>
+        <div class="card">
+            <p>Now that you've collected your measurements into data.csv, it's time to generate a self-contained HTML dashboard. We'll prompt ChatGPT with everything it needs to know about our data format and desired features.</p>
+            
+            <h4>ChatGPT Optimized Prompt:</h4>
+            <p>You are a frontend engineer. Write a single, self-contained HTML file (no external JS/CSS files) that fulfils all requirements below. Return only the code block -- no explanations.</p>
+            
+            <h4>Requirements:</h4>
+            <ul>
+                <li>The user drags-and-drops OR selects a CSV file with header: Iteration, Temperature, Humidity</li>
+                <li>Display two stylish cards showing the latest Temperature (°F) and Humidity (%) with animations</li>
+                <li>Plot two separate line charts with Chart.js 4.x: Temperature vs Iteration, Humidity vs Iteration</li>
+                <li>Show a summary grid with Max/Min/Avg values</li>
+                <li>Show a table of readings (first 50 + last 50 if >100 rows)</li>
+                <li>Use UC-Davis-like palette: primary #022851, secondary #FFBF00, accent blue #8FA8C5</li>
+                <li>Responsive layout with rounded cards and subtle shadows</li>
+            </ul>
+            
+            <h4>Saving and Running Your Offline Dashboard:</h4>
+            <ol>
+                <li>Open a plain‐text editor (e.g. Notepad)</li>
+                <li>Paste the ChatGPT-generated HTML into a new file</li>
+                <li>Save with an .html extension (choose "All Files" in save dialog)</li>
+                <li>Name your file something like IoT_Offline_Dashboard.html</li>
+                <li>Double-click the saved .html file to open in your browser</li>
+                <li>Drag-and-drop your data.csv to load the dashboard</li>
+            </ol>
+            
+            <img src="assets/images/learning-modules/Lab_9/image10.png" alt="Saving HTML file" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_9/image11.png" alt="Offline dashboard example 1" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_9/image12.png" alt="Offline dashboard example 2" class="lab-image">
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Online Dashboard & SimpleIDE Setup</h2>
+        
+        <div class="step">
+            <h3 class="step-title">Update SimpleIDE Workspace</h3>
+            <p>By default, SimpleIDE doesn't include the DHT22 library. Follow these steps to install the updated "Learn" folder:</p>
+            
+            <ol>
+                <li>Download the updated workspace archive from: https://www.parallax.com/package/propeller-c-learn-folder/</li>
+                <li>Click Learn-Folder-Updated-2021.05.27.zipside and save to your PC</li>
+                <li>Launch SimpleIDE and choose Tools → Update Workspace...</li>
+                <li>Select the .zipside file you downloaded and click Open</li>
+                <li>Restart SimpleIDE to ensure new libraries are available</li>
+            </ol>
+            
+            <img src="assets/images/learning-modules/Lab_9/image13.png" alt="Download zipside file" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_9/image14.png" alt="Update workspace menu" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_9/image15.png" alt="Select zipside file" class="lab-image">
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">Hardware Setup</h3>
+            <ul>
+                <li>Move the PCB jumper so it connects 3.3 V → SEL (this powers the WX module)</li>
+                <li>Plug the WX Wi-Fi Module into its header on the Activity Board</li>
+                <li>Insert the DHT22 sensor into the TEMP/RH socket (pin 14)</li>
+                <li>Verify module orientation and jumper position</li>
+            </ul>
+            
+            <img src="assets/images/learning-modules/Lab_9/image16.png" alt="Hardware configuration" class="lab-image">
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">Configure the WX Wi-Fi Module</h3>
+            <ol>
+                <li>Download firmware from: https://www.parallax.com/package/parallax-wx-downloads/</li>
+                <li>Download Parallax_WiFi_Firmware_ESP8266_v1.4.zip</li>
+                <li>Press the RST button four times in quick succession on Activity Board</li>
+                <li>Connect to the wx-xxxxx network that appears</li>
+                <li>Browser should load Parallax configuration page (or go to http://192.168.4.1)</li>
+                <li>Upload new firmware: click Firmware tab, select httpd.ota, click Update</li>
+                <li>Join your home network: switch to STA + AP mode, select your Wi-Fi, enter password</li>
+            </ol>
+            
+            <img src="assets/images/learning-modules/Lab_9/image17.png" alt="Download firmware" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_9/image18.png" alt="WX module SSID" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_9/image19.png" alt="Parallax configuration portal" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_9/image20.png" alt="Firmware upload" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_9/image21.png" alt="Network connection 1" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_9/image22.png" alt="Network connection 2" class="lab-image">
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">Launch the Online Dashboard</h3>
+            <ol>
+                <li>Download mypage.html from Canvas (the course template)</li>
+                <li>In Parallax web UI, switch to Files tab, upload mypage.html</li>
+                <li>Preview at: http://192.168.4.1/files/mypage.html</li>
+                <li>In SimpleIDE, change COM port to wx-xxxxx port</li>
+                <li>Click Run with Terminal in SimpleIDE</li>
+                <li>Return to dashboard and click Start button for live updates</li>
+            </ol>
+            
+            <img src="assets/images/learning-modules/Lab_9/image23.png" alt="Upload HTML file" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_9/image24.png" alt="Dashboard template 1" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_9/image25.png" alt="Dashboard template 2" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_9/image26.png" alt="Select WX serial port" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_9/image27.png" alt="SimpleIDE running code" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_9/image28.png" alt="Live dashboard 1" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_9/image29.png" alt="Live dashboard 2" class="lab-image">
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">What to Submit</h2>
+        <div class="card">
+            <h4>Offline Version (100 points total):</h4>
+            <ol>
+                <li>Save your Blockly code as an .svg (showing iteration, temperature, and humidity in the terminal, and logging data to the SD card) and upload it to Canvas. (50 points)</li>
+                <li>Save your CSV file---containing iteration, temperature, and humidity readings every second---and upload it to Canvas. (20 points)</li>
+                <li>Save your Offline Monitoring Dashboard HTML code and upload it to Canvas. (20 points)</li>
+                <li>Take screenshots of different parts of your offline dashboard and upload them to Canvas. (10 points)</li>
+            </ol>
+            
+            <h4>Online Version (Bonus 20 points total):</h4>
+            <ol>
+                <li>Take a screenshot of your WX Wi-Fi Module successfully connected to your local network or phone hotspot, showing the assigned IP address. (10 points)</li>
+                <li>Take a screenshot of the live online IoT dashboard continuously logging data. (10 points)</li>
+            </ol>
         </div>
     </div>
 </div>

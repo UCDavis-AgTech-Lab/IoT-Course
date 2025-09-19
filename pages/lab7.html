@@ -1,11 +1,180 @@
-<h1 class="page-title">Lab 7: Data Visualization</h1>
-<p class="page-subtitle">Create dashboards to visualize IoT data</p>
+<h1 class="page-title">Lab 7: Controlling Actuators</h1>
+<p class="page-subtitle">Control servo motors and pumps based on sensor measurements</p>
 
 <div class="lab-content">
-    <div class="lab-section">
-        <h2 class="lab-section-title">Coming Soon</h2>
+    <div class="lab-section learning-goals">
+        <h2 class="lab-section-title">Learning Goals</h2>
         <div class="card">
-            <p>This lab content is under development. Check back soon for the complete tutorial on data visualization.</p>
+            <ul>
+                <li>Create scripts and functions in Blockly</li>
+                <li>Learn and practice how to control actuators, servo motors, and a pump based on the sensors' measurements.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="lab-section materials">
+        <h2 class="lab-section-title">Software and Hardware</h2>
+        <div class="card">
+            <ul>
+                <li>BlocklyProp Solo</li>
+                <li>Activity Board and Parallax USB programming cable</li>
+                <li>Soil moisture sensor</li>
+                <li>Temperature/RH sensor</li>
+                <li>Servo motor</li>
+                <li>Pump (peristaltic pump)</li>
+                <li>Outlet Power Relay Module</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Hardware Components</h2>
+        
+        <div class="step">
+            <h3 class="step-title">Servo Motor</h3>
+            <p>The Parallax Feedback 360° High-Speed Servo provides the functionality of a light-duty standard servo, continuous rotation servo, high-speed servo, and encoder in one convenient package.</p>
+            <p>Please note that the power switch of the activity board should be in position 2. You can connect the servo motor to one of the servo pins. Please use pins 16 and 17 and make sure the jumper is set to Vdd (regulated 5 VDC for this board). We should also provide power using a 7 Volt adaptor to supply adequate power/current for the servo.</p>
+            
+            <img src="assets/images/learning-modules/Lab_7/image3.png" alt="Servo Motor Connection" class="lab-image">
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">Peristaltic Pump</h3>
+            <p>The pump houses a flexible tube fitted in a circular pump casing. The pump works through a rotary motion that displaces the fluid inside the tube at a constant rate by squeezing fluid against the pump housing.</p>
+            
+            <img src="assets/images/learning-modules/Lab_7/image50.jpeg" alt="Peristaltic Pump Schematic" class="lab-image">
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">Outlet Power Relay Module</h3>
+            <p>The outlet Power Relay Module (EKM-Switch120) is a power cord that switches 120 AC voltage with a DC control voltage of 3.3--60 VDC, which allows it to be controlled remotely. It has three types of outlets: always ON, normally ON, and normally OFF.</p>
+            
+            <img src="assets/images/learning-modules/Lab_7/image7.jpeg" alt="Power Relay Module" class="lab-image">
+            
+            <ul>
+                <li><strong>Always ON:</strong> it continuously gives power when the module is powered on.</li>
+                <li><strong>Normally OFF:</strong> it is normally OFF. It becomes ON when the module is powered ON and the relay switch is turned ON by the activity board.</li>
+                <li><strong>Normally ON:</strong> it is normally ON. It becomes OFF when the relay switch is turned ON by the activity board.</li>
+            </ul>
+            
+            <p><strong>Connection:</strong> Connect the relay module to 'relay 1' socket (or 'relay 2' socket) on the green custom-designed board mounted on the activity board.</p>
+            <ul>
+                <li>Relay 1 socket is connected to pin 13.</li>
+                <li>Relay 2 socket is connected to pin 12.</li>
+            </ul>
+            
+            <img src="assets/images/learning-modules/Lab_7/image9.jpeg" alt="Relay Connection Method A" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_7/image10.jpeg" alt="Relay Connection Method B" class="lab-image">
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Programming Assignment</h2>
+        <div class="card">
+            <p>Create a script that:</p>
+            <ol>
+                <li>Asks users to enter a threshold for relative humidity level and saves it as a variable called "rh_threshold".</li>
+                <li>Asks users to enter a threshold for soil moisture level and saves it as a variable called "moisture_threshold".</li>
+                <li>Reads RH level in percentage using temp/RH sensor and assigns it to "rh" variable; please note the temp/RH sensor is connected to PIN 14.</li>
+                <li>Reads soil moisture level and assigns it to "moisture" variable; please note that the soil moisture sensor is connected to AD2 (analog to digital converter).</li>
+                <li>Prints the measured value for the relative humidity (%) in the terminal.</li>
+                <li>Prints the measured value for soil moisture in the terminal. Please note that the output value is voltage (volt-100ths between 0-5).</li>
+                <li>Makes decisions based on the measured RH. If the measured RH is more than the defined threshold, we need to spin the servo motor 360 degrees. We assume the motor acts like a fan to vent moisture and reduce humidity in a greenhouse.</li>
+                <li>Makes decisions based on the measured soil moisture level. If the measured soil level is less than the defined threshold, we need to turn ON our irrigation system (the pump).</li>
+            </ol>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Condition</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Relative humidity > threshold</td>
+                        <td>Spin the servo motor 360° per second (fan ON). Otherwise, set speed to 0.</td>
+                    </tr>
+                    <tr>
+                        <td>Soil moisture < threshold</td>
+                        <td>Turn on the pump until soil moisture returns to desired level.</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p>Save your code as: <span class="highlight">Lab7_YourInitials_actuators</span> (e.g., Lab7_AM_actuators)</p>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Blockly Programming Blocks</h2>
+        
+        <div class="step">
+            <h3 class="step-title">Servo Motor Blocks</h3>
+            <img src="assets/images/learning-modules/Lab_7/image11.png" alt="Servo Initialize Block" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_7/image12.png" alt="Servo Speed Block" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_7/image13.png" alt="Servo Position Block" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_7/image14.png" alt="Servo Status Block" class="lab-image">
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">Peristaltic Pump Control</h3>
+            <p>Set pin 13 (which is relay 1) high to turn on the pump.</p>
+            <img src="assets/images/learning-modules/Lab_7/image15.png" alt="Pump Control Block" class="lab-image">
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Code Structure and Hints</h2>
+        
+        <div class="step">
+            <h3 class="step-title">Main Block Structure</h3>
+            <ul>
+                <li>Iteration = 1</li>
+                <li>Get the RH threshold in the terminal</li>
+                <li>Get moisture threshold in the terminal</li>
+                <li>A continuous loop (use <em>repeat forever</em> block):
+                    <ul>
+                        <li>Print iteration number</li>
+                        <li>Call function that reads and prints RH sensor data</li>
+                        <li>Call function that reads and prints soil moisture data</li>
+                        <li>Call function that makes decisions based on RH value</li>
+                        <li>Call function that makes decisions based on soil moisture value</li>
+                        <li>Pause for 4000 ms</li>
+                        <li>Increment iteration variable</li>
+                        <li>Clear the screen</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">Function Blocks</h3>
+            <p>You have four functions, name them as:</p>
+            <ul>
+                <li><strong>rh_sensor:</strong> reads the RH sensor data</li>
+                <li><strong>moisture_sensor:</strong> reads the soil moisture data</li>
+                <li><strong>servo_motor:</strong> changes the speed of the servo motor
+                    <ul>
+                        <li>If RH value > rh_threshold: Set servo speed to 360°/second & Print("Fan is ON!")</li>
+                        <li>Else: Set servo speed to 0°/second & Print("Fan is OFF!")</li>
+                    </ul>
+                </li>
+                <li><strong>irrigation_pump:</strong> changes the status of the irrigation pump
+                    <ul>
+                        <li>If moisture value < moisture_threshold: Make PIN 13 high & Print("The irrigation pump is ON!")</li>
+                        <li>Else: Make PIN 13 low & Print("The irrigation pump is OFF!")</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">What to Submit</h2>
+        <div class="card">
+            <p>Submit your code saved as a <strong>*.svg file</strong>.</p>
+            <p><strong>Naming:</strong> Lab7_YourInitials_actuators.svg</p>
         </div>
     </div>
 </div>

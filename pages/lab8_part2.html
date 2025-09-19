@@ -1,0 +1,119 @@
+<h1 class="page-title">Lab 8 Part 2: Sensor Calibration</h1>
+<p class="page-subtitle">Learn sensor calibration techniques and characteristic curve analysis</p>
+
+<div class="lab-content">
+    <div class="lab-section learning-goals">
+        <h2 class="lab-section-title">Learning Goals</h2>
+        <div class="card">
+            <ul>
+                <li>Create scripts and functions in Blockly</li>
+                <li>Learn and practice:
+                    <ul>
+                        <li>How to calibrate a sensor</li>
+                        <li>How to find the characteristic curve of a sensor</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="lab-section materials">
+        <h2 class="lab-section-title">Software and Hardware</h2>
+        <div class="card">
+            <ul>
+                <li>BlocklyProp Solo</li>
+                <li>Activity Board and Parallax USB programming cable</li>
+                <li>PAR sensor</li>
+                <li>Calibrated PAR sensor - Quantum meter</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">What is PAR?</h2>
+        <div class="card">
+            <p>Photosynthetically active radiation (PAR), which is solar radiation ranging from 400 to 700 nm, is the most important energy source for crops, used by them for photosynthesis. A low or high PAR intensity can deteriorate photosynthesis; hence, it may become a stress factor.</p>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Background</h2>
+        <div class="card">
+            <p>Sensor calibration is required to ensure accurate measurements by the sensor. Therefore, it is necessary to minimize the sensor's error, i.e., to minimize the difference between the measured value by the sensor and the actual value of the quantity being measured.</p>
+            <p>The purpose of calibration is to find or update the characteristic curve, which defines the relationship between the quantity being measured and the sensor's output. Calibration must be performed in a timely manner to prevent performance degradation and ensure accurate measurements.</p>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Multi-point Curve Fitting</h2>
+        <div class="card">
+            <p>The objective is to calibrate the PAR sensor, which returns raw numbers. The goal is to find a characteristic curve that maps the light intensity in µmol/(m²s) to the sensor's output.</p>
+            
+            <h4>Calibration Steps:</h4>
+            <ol>
+                <li>Take measurements with the PAR sensor at various light intensities (low, medium, high)</li>
+                <li>Repeat measurements with a calibrated reference instrument under the same conditions</li>
+                <li>Record measurements in a table</li>
+                <li>Plot sensor measurements versus actual light intensity</li>
+                <li>Fit a linear model to obtain the characteristic curve</li>
+            </ol>
+            
+            <img src="assets/images/learning-modules/Lab_8_Part_2/image2.jpeg" alt="Calibrated and Uncalibrated Sensors" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_8_Part_2/image3.png" alt="Quantum Meter" class="lab-image">
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Excel Data Analysis</h2>
+        
+        <div class="step">
+            <h3 class="step-title">Creating Scatter Plots</h3>
+            <p>In Excel: Select the two columns > Insert tab > Charts > Scatter.</p>
+            
+            <img src="assets/images/learning-modules/Lab_8_Part_2/image4.png" alt="Excel Scatter Plot Creation" class="lab-image">
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">Adding Trendlines</h3>
+            <p>Right click on one of the points > add trendline > select linear model > Display Equation and R-squared value on Chart</p>
+            
+            <img src="assets/images/learning-modules/Lab_8_Part_2/image5.png" alt="Adding Trendline" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_8_Part_2/image6.png" alt="Trendline Options" class="lab-image">
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Two-Point Calibration</h2>
+        <div class="card">
+            <p>Use the first and last row of your data (extreme values) to find a calibration model using the two-point calibration equation:</p>
+            
+            <div class="equation">
+                <p><strong>corrected value = (raw value - RawLow) × (ReferenceRange/RawRange) + ReferenceLow</strong></p>
+            </div>
+            
+            <p>Since RawLow and ReferenceLow are both zero, the equation simplifies to:</p>
+            
+            <div class="equation">
+                <p><strong>corrected value = (raw value) × (ReferenceRange/RawRange)</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">What to Submit</h2>
+        <div class="card">
+            <ol>
+                <li><strong>Measurements Table:</strong> Your data entered into the calibration table (no points)</li>
+                <li><strong>Scatter Plot:</strong> Plot showing characteristic curve equation (20 points)</li>
+                <li><strong>Inverse Function:</strong> Calculate inverse of characteristic curve (10 points)</li>
+                <li><strong>Calibration Tables:</strong> Complete both calibration method tables (20 points)</li>
+                <li><strong>RMSE Analysis:</strong> Calculate RMSE for each technique and determine which is better (10 points)</li>
+                <li><strong>Sensor Sensitivity:</strong> Determine sensitivity and its unit (10 points)</li>
+                <li><strong>Sensor Offset:</strong> Identify if sensor has bias/offset (10 points)</li>
+                <li><strong>Maximum Range:</strong> Calculate maximum measurable light intensity (10 points)</li>
+                <li><strong>Calibrated Plot:</strong> Plot calibrated vs. actual values with trendline analysis (10 points)</li>
+            </ol>
+            <p><strong>Submit responses as Word/PDF file</strong></p>
+        </div>
+    </div>
+</div>

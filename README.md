@@ -17,7 +17,7 @@ The goal is to provide a self‑contained, modern learning hub that guides stude
 | 🖨️ **Print / PDF‑ready** | "Download as PDF" button isolates the current section and triggers `window.print()` for clean exports. |
 | 📝 **Markdown Export** | "Download as MD" converts the visible section to Markdown and downloads it as a file. |
 | 📱 **Responsive Design** | Collapsible sidebar and mobile dropdown keep navigation usable on any screen size. |
-| 🗺️ **Progressive Lab Series** | 5 complete labs + Smart Pot capstone project with BlocklyProp Solo programming. |
+| 🗺️ **Progressive Lab Series** | 10 complete labs + Smart Pot capstone project with BlocklyProp Solo programming. |
 | 🛠️ **Hardware Documentation** | Comprehensive Parallax Propeller board documentation and custom board specs. |
 | 🗃️ **Course Materials** | Syllabus, resources, FAQ, and all lab content organized professionally. |
 | 🚀 **Dynamic Loading** | JavaScript dynamically loads page content without page refreshes. |
@@ -78,10 +78,15 @@ The course introduces IoT fundamentals using **Parallax Propeller Activity Board
 ### 🔬 Laboratory Sessions
 1. **Lab 1**: Installing BlocklyProp Solo - Development environment setup
 2. **Lab 2**: Blockly Programming - Variables, functions, loops, conditionals  
-3. **Lab 3**: Advanced Programming - Temperature conversion, password systems
-4. **Lab 4**: Temperature & Humidity - Environmental sensor integration
-5. **Lab 5**: Distance Sensor & Audio - Proximity detection with audio feedback
-6. **Lab 10**: Smart Pot Project - Complete IoT system for plant environment control
+3. **Lab 3**: Temperature Conversion & Password Evaluator - Advanced programming with functions and boolean logic
+4. **Lab 4**: Temperature & Humidity Sensor - Environmental sensor integration with DHT22
+5. **Lab 5**: Ping Sensor, Speaker & LED - Proximity detection with audio feedback and distance measurement
+6. **Lab 6**: PAR & Soil Moisture Sensors - Agricultural sensor integration for light and moisture monitoring
+7. **Lab 7**: Controlling Actuators - Servo motors and pumps based on sensor measurements
+8. **Lab 8 Part 1**: Sensor Accuracy Evaluation - Compare Ultrasonic vs. Laser Ping sensors with Excel analysis
+9. **Lab 8 Part 2**: Sensor Calibration - Learn calibration techniques and characteristic curve analysis
+10. **Lab 9**: IoT Dashboard - Build real-time data logging and web-based IoT dashboards with ChatGPT
+11. **Lab 10**: Smart Pot Project - Complete IoT system for plant environment control
 
 ### 🛠️ Hardware Documentation
 - **Parallax Propeller Board Overview** - Key features and setup guide
