@@ -1,0 +1,16 @@
+# Hide development and source files from main branch
+Course_Instruction_Markdown/
+Course_Instruction_PDF/
+Lab_Markdowns/
+Lab_PDFs/
+Prompt_Instruction/
+Word_To_Markdown_Conversion_Code/
+create_dev_branch.bat
+
+# Keep only essential website files visible in main branch:
+# - assets/
+# - css/
+# - js/
+# - pages/
+# - index.html
+# - README.md
