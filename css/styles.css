@@ -80,7 +80,7 @@ a:hover {
     display: none;
     background: none;
     border: none;
-    color: white;
+    color: #fdbe0e;
     font-size: 24px;
     cursor: pointer;
     margin-right: 15px;
@@ -92,6 +92,7 @@ a:hover {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: #fdbe0e;
 }
 
 .header-right {
@@ -102,7 +103,7 @@ a:hover {
 .header-button {
     background: none;
     border: none;
-    color: white;
+    color: #fdbe0e;
     margin-left: 15px;
     cursor: pointer;
     font-size: 16px;
@@ -119,7 +120,7 @@ a:hover {
     display: none;
     background: none;
     border: none;
-    color: white;
+    color: #fdbe0e;
     font-size: 24px;
     cursor: pointer;
 }
@@ -138,7 +139,7 @@ a:hover {
 .mobile-dropdown-item {
     display: block;
     padding: 15px;
-    color: white;
+    color: #fdbe0e;
     text-decoration: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }

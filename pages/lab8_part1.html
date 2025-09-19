@@ -1,0 +1,171 @@
+<h1 class="page-title">Lab 8 Part 1: Sensor Accuracy Evaluation</h1>
+<p class="page-subtitle">Compare accuracy of Ultrasonic vs. Laser Ping sensors with data analysis</p>
+
+<div class="lab-content">
+    <div class="lab-section learning-goals">
+        <h2 class="lab-section-title">Learning Goals</h2>
+        <div class="card">
+            <ul>
+                <li>Develop Blockly Scripts: Create and utilize functions in Blockly for task automation and control.</li>
+                <li>Data Saving Techniques: Learn how to record and save sensor data on an SD card.</li>
+                <li>Sensor Accuracy Comparison: Examine and compare the accuracy of Ultrasonic vs. Laser Ping sensors for distance measurement.</li>
+                <li>Data Analysis in Excel: Practice plotting actual versus measured data and calculating the coefficient of determination (R²) value to evaluate the goodness of fit of the data.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="lab-section materials">
+        <h2 class="lab-section-title">Software and Hardware</h2>
+        <div class="card">
+            <ul>
+                <li>BlocklyProp Solo</li>
+                <li>Activity Board and Parallax USB programming cable</li>
+                <li>Laser Ping Sensor</li>
+                <li>Ultrasonic Sensor</li>
+                <li>GND -- VIN -- SIG cable</li>
+                <li>SD Card</li>
+                <li>SD Card Reader</li>
+                <li>Ruler or Measuring Tape</li>
+                <li>Excel</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">SD Card Data Storage</h2>
+        <div class="card">
+            <p>Your ActivityBot board has a built-in card reader that is compatible with our preformatted microSD card. SD cards can give your Propeller microcontroller invention some extra gigabytes of memory to work with.</p>
+            
+            <img src="assets/images/learning-modules/Lab_8_Part_1/image1.png" alt="Built-in card reader for microSD Card" class="lab-image">
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Sensor Connections</h2>
+        
+        <div class="step">
+            <h3 class="step-title">Laser Ping Sensor</h3>
+            <p>The Laser PING Rangefinder provides an easy method of distance measurement. This near-infrared, time-of-flight (TOF) sensor is ideal for measuring distances between moving or stationary objects.</p>
+            
+            <ul>
+                <li>Identify the Cable: Locate the cable with three pins labeled GND, VIN, and SIG.</li>
+                <li>Connect to Sensor: Attach one end to the Laser Ping Sensor (GND to Ground, VIN to Voltage In, SIG to Signal)</li>
+                <li>Connect to Board: Connect the other end to the Ping socket (pin 15) on the Activity Board.</li>
+            </ul>
+            
+            <img src="assets/images/learning-modules/Lab_8_Part_1/image2.png" alt="Laser Ping Sensor Connection" class="lab-image">
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">Ultrasonic Sensor</h3>
+            <p>Ultrasonic sensors provide precise, non-contact distance measurements within a 3 cm to 3 m range.</p>
+            
+            <ul>
+                <li>Identify the Cable: Locate the cable with three pins labeled GND, VIN, and SIG.</li>
+                <li>Connect to Sensor: Attach one end to the Ultrasonic Sensor</li>
+                <li>Connect to Board: Connect to the General socket (pin 7) on the Activity Board. Adjust jumper caps to 5V and P7.</li>
+            </ul>
+            
+            <img src="assets/images/learning-modules/Lab_8_Part_1/image3.png" alt="Ultrasonic Sensor Connection" class="lab-image">
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Programming Assignment</h2>
+        <div class="card">
+            <p>Your script may have a main block and a few functions:</p>
+            
+            <h4>Main Block:</h4>
+            <ul>
+                <li>Ask users to enter the number of measurements (n_iteration)</li>
+                <li>Set iteration variable to 1</li>
+                <li>Open a CSV file on the SD Card (Data.csv)</li>
+                <li>Create header string: "actual, ping, ultrasonic"</li>
+                <li>Write header to SD card</li>
+                <li>Loop n_iteration times with six functions</li>
+                <li>Close the file after loop completion</li>
+            </ul>
+            
+            <h4>Six Functions in Loop:</h4>
+            <ul>
+                <li><strong>Print_iteration:</strong> prints "Measurement XXX out of YYY"</li>
+                <li><strong>Get_actual:</strong> gets actual distance from user</li>
+                <li><strong>Read_ping:</strong> reads distance from ping sensor</li>
+                <li><strong>Read_ultrasonic:</strong> reads distance from ultrasonic sensor</li>
+                <li><strong>Write_data:</strong> bundles and saves data to SD card</li>
+                <li><strong>Print_data_to_save:</strong> prints data to terminal</li>
+            </ul>
+            
+            <p>Save your code as: <span class="highlight">Lab8_YourInitials_distance_sensors_accuracy</span> (e.g., Lab8_AM_distance_sensors_accuracy)</p>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Measurement Setup</h2>
+        <div class="card">
+            <p>To accurately measure distances, use a measuring tape or ruler. Measure distances at equal intervals from 10 cm up to 1 meter, in 10 cm increments (10 cm, 20 cm, 30 cm, etc.).</p>
+            
+            <ol>
+                <li>Set up the Measuring Tape: Stretch a measuring tape between the sensor and a stationary object.</li>
+                <li>Position the Sensors: Start by placing the sensors 10 cm away from the object. After recording the distance, move the sensors back another 10 cm.</li>
+                <li>Record the Data: Measure and record the distance at each interval using both sensors.</li>
+            </ol>
+            
+            <img src="assets/images/learning-modules/Lab_8_Part_1/image4.png" alt="Distance Measurement Setup" class="lab-image">
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Blockly Programming Blocks</h2>
+        
+        <div class="step">
+            <h3 class="step-title">SD Card Operations</h3>
+            <img src="assets/images/learning-modules/Lab_8_Part_1/image5.png" alt="SD File Open Block" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_8_Part_1/image6.png" alt="Create String Header Block" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_8_Part_1/image10.png" alt="Write Data Block" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_8_Part_1/image11.png" alt="Newline Block" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_8_Part_1/image12.png" alt="Close File Block" class="lab-image">
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">Sensor Reading Blocks</h3>
+            <img src="assets/images/learning-modules/Lab_8_Part_1/image7.png" alt="Laser Ping Distance Block" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_8_Part_1/image8.png" alt="Ultrasonic Distance Block" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_8_Part_1/image9.png" alt="Convert to String Block" class="lab-image">
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Data Analysis in Excel</h2>
+        <div class="card">
+            <ol>
+                <li>Access the Data: Insert SD Card into reader and locate the CSV file</li>
+                <li>Open Excel File: Three columns - actual distances, Laser Ping measurements, Ultrasonic measurements</li>
+                <li>Create Scatter Plot: Insert > Recommended Charts > X Y (Scatter)</li>
+                <li>Add Trendline: Right-click on data points > Add Trendline > Display equation and R-squared value</li>
+                <li>Analyze R-Squared: Values close to 1 indicate high accuracy</li>
+                <li>Compare Sensors: Determine which sensor has higher R-squared value</li>
+            </ol>
+            
+            <img src="assets/images/learning-modules/Lab_8_Part_1/image13.png" alt="Excel Scatter Plot Example" class="lab-image">
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">What to Submit</h2>
+        <div class="card">
+            <ol>
+                <li>Code Submission: Save Blockly code as .svg file (50 points)</li>
+                <li>Data Plots: Two scatter plots with R-squared values (40 points total)
+                    <ul>
+                        <li>Actual vs. Laser Ping distances (20 points)</li>
+                        <li>Actual vs. Ultrasonic distances (20 points)</li>
+                    </ul>
+                </li>
+                <li>Analysis: Determine which sensor has higher accuracy (10 points)</li>
+                <li>Bonus Task: Test with different materials (black, white, transparent glass) and discuss material effects (20 points)</li>
+            </ol>
+            <p><strong>Naming:</strong> Lab8_YourInitials_distance_sensors_accuracy.svg</p>
+        </div>
+    </div>
+</div>

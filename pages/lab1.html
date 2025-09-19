@@ -7,7 +7,7 @@
         <div class="card">
             <ul>
                 <li>Connect Parallax activity board to a computer</li>
-                <li>Create a simple script in Blockly</li>
+                <li>Create a simple script in blockly</li>
                 <li>Run and save the script</li>
             </ul>
         </div>
@@ -27,10 +27,15 @@
     <div class="lab-section">
         <h2 class="lab-section-title">Instructions</h2>
         <div class="card">
-            <p>Please follow the instructions on the <a href="https://learn.parallax.com/tutorials/language/blocklyprop/getting-started-blocklyprop-solo" target="_blank">Parallax website</a>.</p>
-            <p>This assignment has three steps shown on the top left. Please follow the instructions for each step. Please start from the first one (BlocklyProp Launcher). You can then go to the next step either by clicking on the top left menu (Connect and Program) or simply by clicking on the menu (Connect and Program) shown at the bottom of the page.</p>
+            <p>Please follow the instructions on the website: <a href="https://learn.parallax.com/courses/getting-started-with-blocklyprop-solo/lessons/blocklyprop-launcher/" target="_blank">https://learn.parallax.com/courses/getting-started-with-blocklyprop-solo/lessons/blocklyprop-launcher/</a></p>
             
-            <img src="assets/images/learning-modules/lab1_pic1.png" alt="BlocklyProp Interface" class="lab-image">
+            <p>This assignment has three steps shown on the top left. Please follow the instructions for each step. Please start with the first one (BlocklyProp Launcher). You can then go to the next step either by clicking on the top left menu (Connect and Program) or simply by clicking on the menu (Connect and Program) shown at the bottom of the page. Alternatively, you can follow the steps in the <em>'Lab_1_Getting Started with BlocklyProp Solo.pdf'</em>.</p>
+            
+            <p>Menu on the top left side of the website.</p>
+            <img src="assets/images/learning-modules/Lab_1/image1.png" alt="Menu on top left" class="lab-image">
+            
+            <p>Go to the next/previous page shown at the bottom of the website.</p>
+            <img src="assets/images/learning-modules/Lab_1/image2.png" alt="Navigation at bottom" class="lab-image">
         </div>
     </div>
 
@@ -38,7 +43,7 @@
         <h2 class="lab-section-title">Step-by-Step Tutorial</h2>
         
         <div class="step">
-            <h3 class="step-title">Step 1. BlocklyProp Launcher</h3>
+            <h3 class="step-title">1. BlocklyProp Launcher</h3>
             <ul>
                 <li>Download and install the BlocklyProp Launcher Installer for your operating system.</li>
                 <li>Name your project appropriately. For instance, you may want to name it as: <span class="highlight">Lab1_YourInitials_DescriptiveName</span> (e.g., Lab1_AM_installingBlocklyprop)</li>
@@ -46,17 +51,17 @@
         </div>
 
         <div class="step">
-            <h3 class="step-title">Step 2. Connect and Program</h3>
+            <h3 class="step-title">2. Connect and Program</h3>
             <p>Once you connect the USB cable, from the port dropdown menu in the software (shown below), select the COM (communication) port connected to your Propeller board.</p>
             
-            <img src="assets/images/learning-modules/lab1_pic2.png" alt="Port Selection" class="lab-image">
+            <img src="assets/images/learning-modules/Lab_1/image3.jpeg" alt="Port Selection Interface" class="lab-image">
         </div>
 
         <div class="step">
-            <h3 class="step-title">Step 3. Saving Projects</h3>
+            <h3 class="step-title">3. Saving Projects</h3>
             <ul>
                 <li>Pay attention to the difference between RAM and EEPROM.</li>
-                <li>Save your project. It is saved as *.svg file. Every time you save the project, it adds a number at the end and saves it, unless you overwrite on the previous version.</li>
+                <li>Save your project. It is saved as *.svg file. Every time you save the project, it adds a number at the end and saves it unless you overwrite it on the previous version.</li>
             </ul>
         </div>
     </div>
@@ -71,25 +76,35 @@
                 <li>If the system doesn't detect the device connected via USB, then follow these steps:
                     <ul>
                         <li>Install Parallax FTDI USB Drivers</li>
+                        <li>This system requires USB Serial Drivers in order to work properly with modern Propeller-based devices. Install the Parallax USB Drivers (included in the BlocklyProp Launcher Setup) before using this software. You skip this installation since it is included in the BlocklyProp Launcher Setup (Accept default installation with FTDI drivers).</li>
                         <li><a href="https://www.parallax.com/package/parallax-ftdi-usb-drivers-for-windows/" target="_blank">Parallax FTDI USB Drivers for Windows</a></li>
                         <li><a href="https://www.parallax.com/package/mac-ftdi-usb-driver/" target="_blank">Mac FTDI USB Driver</a></li>
                     </ul>
                 </li>
+            </ul>
+            
+            <h4>What is FTDI USB driver?</h4>
+            <p>FTDI USB Serial Port driver is the software that helps your operating system to communicate with USB Serial Port devices. (<a href="https://www.dell.com/" target="_blank">https://www.dell.com/</a>).</p>
+            
+            <p>If it didn't help, then turn off the memory integrity setting on your PC and restart the system.</p>
+            <ul>
+                <li>You can also open the Core isolation page by selecting <strong>Start</strong> > <strong>Settings</strong> > <strong>Update & Security</strong> > <strong>Windows Security</strong> > <strong>Device Security</strong> and then under <strong>Core isolation</strong>, selecting <strong>Core isolation details</strong>.</li>
+                <li>Turn off the memory integrity.</li>
             </ul>
         </div>
 
         <div class="step">
             <h3 class="step-title">Programming</h3>
             <ol>
-                <li>Create a block of code that prints the following texts in a new line in the terminal:
+                <li>Create a block of code that prints the following text in a new line in the terminal:
                     <ul>
                         <li>Add a comment as the first line of the code saying, 'TAE 30'.</li>
-                        <li>Add another comment in the next line: 'Lab 1'.<br>
-                            <strong>NOTE:</strong> the comments are not printed in the terminal. Comments are used to annotate the code and make it easier to understand for yourself when you get back to your code later and also for others when you share your code with them.</li>
+                        <li>Add another comment in the next line: 'Lab 1'.</li>
+                        <li><strong>NOTE:</strong> The comments are not printed in the terminal. Comments are used to annotate the code and make it easier to understand for yourself when you get back to your code later and also for others when you share your code with them.</li>
                         <li>Print the following statements, each in a new line:
                             <ul>
                                 <li>Hello!</li>
-                                <li>A blank line to leave a space between the first and second line.</li>
+                                <li>A blank line to leave a space between the first and second lines.</li>
                                 <li>Your name (e.g., "My name is Ali Moghimi")</li>
                                 <li>A fun statement (e.g., 'I love ice cream!')</li>
                             </ul>
@@ -98,15 +113,20 @@
                 </li>
                 <li>Save your code on your computer.</li>
             </ol>
+            
+            <p>A screenshot of your code and the terminal showing the printed statements. Please note the project name with your initials should be visible in the screenshot (similar to the screenshot below).</p>
+            <img src="assets/images/learning-modules/Lab_1/image4.png" alt="Example Screenshot" class="lab-image">
         </div>
     </div>
 
     <div class="lab-section">
-        <h2 class="lab-section-title">What to Submit</h2>
+        <h2 class="lab-section-title">Notes on Programming</h2>
         <div class="card">
-            <p>A screenshot of your code and the terminal showing the printed statements. Please note the project name with your initials should be visible in the screenshot (similar to the screenshot below).</p>
+            <p>To add a comment, go to the Control section on the left menu > add comment:</p>
+            <img src="assets/images/learning-modules/Lab_1/image5.png" alt="Adding Comments" class="lab-image">
             
-            <img src="assets/images/learning-modules/lab1_pic3.png" alt="Example Screenshot" class="lab-image">
+            <p>To print a statement in the terminal, go to the Communicate tab on the left menu > Terminal > Terminal print text:</p>
+            <img src="assets/images/learning-modules/Lab_1/image6.png" alt="Terminal Print Text" class="lab-image">
         </div>
     </div>
 </div>

@@ -1,11 +1,136 @@
-<h1 class="page-title">Lab 6: Cloud Integration</h1>
-<p class="page-subtitle">Connect IoT devices to cloud platforms</p>
+<h1 class="page-title">Lab 6: PAR & Soil Moisture Sensors</h1>
+<p class="page-subtitle">Agricultural sensor integration for light and moisture monitoring</p>
 
 <div class="lab-content">
-    <div class="lab-section">
-        <h2 class="lab-section-title">Coming Soon</h2>
+    <div class="lab-section learning-goals">
+        <h2 class="lab-section-title">Learning Goals</h2>
         <div class="card">
-            <p>This lab content is under development. Check back soon for the complete tutorial on cloud integration.</p>
+            <ul>
+                <li>Create scripts and functions in Blockly</li>
+                <li>Learn and practice:
+                    <ul>
+                        <li>How to measure photosynthetic light level using a <strong>p</strong>hotosynthetically <strong>a</strong>ctive <strong>r</strong>adiation (PAR) sensor.</li>
+                        <li>How to measure the soil moisture using a soil moisture sensor.</li>
+                        <li>Making decisions based on input sensor data.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="lab-section materials">
+        <h2 class="lab-section-title">Software and Hardware</h2>
+        <div class="card">
+            <ul>
+                <li>BlocklyProp Solo</li>
+                <li>Activity Board and Parallax USB programming cable</li>
+                <li>PAR sensor</li>
+                <li>Soil moisture sensor</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">What is PAR?</h2>
+        <div class="card">
+            <p>Photosynthetically active radiation (PAR) is the most important energy source (solar radiation ranging from 400 to 700 nm) for crops, which is used by them for photosynthesis. A low or high PAR intensity can deteriorate photosynthesis; hence, it may become a stress factor.</p>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Sensor Connection</h2>
+        <div class="card">
+            <p>Please note the soil moisture sensor is connected to the "General" purpose socket, the one next to PAR (second from the bottom when sockets are pointing to the right), with jumpers set to "5V" and "AD2", as shown in this figure.</p>
+            
+            <img src="assets/images/learning-modules/Lab_6/image2.jpeg" alt="Soil Moisture Sensor Connection" class="lab-image">
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Programming Assignment</h2>
+        <div class="card">
+            <p>Create a script that:</p>
+            <ol>
+                <li>Asks users to enter a threshold for photosynthetic light level and saves it as a variable called "par_threshold".</li>
+                <li>Asks users to enter a threshold for soil moisture level and saves it as a variable called "moisture_threshold".</li>
+                <li>Reads photosynthetic light level using PAR sensor and assigns it to "par" variable; please note the PAR sensor is connected to AD3 (analog to digital converter).</li>
+                <li>Reads soil moisture level and assigns it to the "moisture" variable; please note that the soil moisture sensor is connected to AD2 (analog to digital converter).</li>
+                <li>Prints the measured value for PAR in the terminal. Please note that the output value is a unitless number without physical meaning (unit). We need to calibrate the sensor to have a physical unit (µmol/(m²s): millimoles of light energy per square meter per second) for the measurements.</li>
+                <li>Prints the measured value for soil moisture in the terminal. Please note that the output value is a unitless number without physical meaning (unit).</li>
+                <li>Makes decisions based on the measured PAR. If the measured PAR is less than the defined threshold, we need to turn ON our light source (e.g., a lamp). In this case, we will turn ON LED 26, assuming we are turning ON the lamp located on the top of the plants in a greenhouse.</li>
+                <li>Makes decisions based on the measured soil moisture level. If the measured soil level is less than the defined threshold, we need to turn ON our irrigation system. In this case, we will turn ON LED 27, assuming we are turning ON the irrigation system.</li>
+            </ol>
+            <p>Save your code as: <span class="highlight">Lab6_YourInitials_PAR_moisture</span> (e.g., Lab6_AM_PAR_moisture)</p>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Code Structure and Hints</h2>
+        
+        <div class="step">
+            <h3 class="step-title">Main Block Structure</h3>
+            <ul>
+                <li>Iteration = 1</li>
+                <li>Get the PAR threshold in the terminal</li>
+                <li>Get the moisture threshold in the terminal</li>
+                <li>A continuous loop (use <em>repeat forever</em> block):
+                    <ul>
+                        <li>Print iteration number.</li>
+                        <li>Call a <strong>function</strong> that reads the PAR sensor data and prints it in the terminal.</li>
+                        <li>Call a <strong>function</strong> that reads the soil moisture data and prints it in the terminal.</li>
+                        <li>Call a <strong>function</strong> that makes decisions based on PAR value.</li>
+                        <li>Call a <strong>function</strong> that makes decisions based on soil moisture value.</li>
+                        <li>Pause for 3000 ms.</li>
+                        <li>Increment iteration variable.</li>
+                        <li>At the end of the loop, please clear the screen (use <em>Terminal clear screen</em> block)</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">Function Blocks</h3>
+            <p>You have four functions, name them as:</p>
+            <ul>
+                <li><strong>par_sensor:</strong> reads the PAR sensor data</li>
+                <li><strong>moisture_sensor:</strong> reads the soil moisture data</li>
+                <li><strong>light_source:</strong> changes the status of light source based on the PAR data
+                    <ul>
+                        <li>If PAR value < par_threshold: Make PIN 26 high & Print("The light source is ON!")</li>
+                        <li>Else: Make PIN 26 low & Print("The light source is OFF!")</li>
+                    </ul>
+                </li>
+                <li><strong>irrigation_pump:</strong> changes the status of irrigation pump based on the soil moisture value
+                    <ul>
+                        <li>If moisture value < moisture_threshold: Make PIN 27 high & Print("The irrigation pump is ON!")</li>
+                        <li>Else: Make PIN 27 low & Print("The irrigation pump is OFF!")</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3 class="step-title">Reading Sensor Data</h3>
+            <p>To read sensor data, you need to use A/D channel. The block is under the Analog/Pulses menu on the left side > voltage ></p>
+            
+            <img src="assets/images/learning-modules/Lab_6/image3.png" alt="A/D Channel Block" class="lab-image">
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">What to Submit</h2>
+        <div class="card">
+            <p>Submit your code saved as a <strong>*.svg file</strong>.</p>
+            <p><strong>Naming:</strong> Lab6_YourInitials_PAR_moisture.svg</p>
+        </div>
+    </div>
+
+    <div class="lab-section">
+        <h2 class="lab-section-title">Useful Resources</h2>
+        <div class="card">
+            <ul>
+                <li><a href="https://learn.parallax.com/support/reference/propeller-blocklyprop-block-reference" target="_blank">Propeller BlocklyProp Block Reference</a></li>
+            </ul>
         </div>
     </div>
 </div>
