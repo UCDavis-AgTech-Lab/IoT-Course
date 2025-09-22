@@ -2,7 +2,7 @@
 
 class TAE30Website {
     constructor() {
-        this.currentSection = 'ome';
+        this.currentSection = 'home';
         this.init();
     }
 
