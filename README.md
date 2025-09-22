@@ -1,7 +1,7 @@
 # TAE30 – Communications & Computing Technology  
 _Internet of Things (IoT) Laboratory Materials_
 
-[![Live Site](https://img.shields.io/badge/GitHub%20Pages-live-blue)](https://mohammadrezanarimaniucdavis.github.io/TAE30-IoT-Lab-Materials/)
+[![Live Site](https://img.shields.io/badge/GitHub%20Pages-live-blue)](https://ucdavis-agtech-lab.github.io/IoT-Course/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](#license)
 
 Interactive course website and lab content for **TAE30: Communications and Computing Technology** offered by the University of California, Davis (Biological & Agricultural Engineering).  
@@ -27,7 +27,7 @@ The goal is to provide a self‑contained, modern learning hub that guides stude
 
 ## 🚀 Live Demo
 The production build is automatically published via GitHub Pages:  
-<https://mohammadrezanarimaniucdavis.github.io/TAE30-IoT-Lab-Materials/>
+<https://ucdavis-agtech-lab.github.io/IoT-Course/>
 
 ---
 
